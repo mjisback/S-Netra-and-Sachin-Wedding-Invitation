@@ -296,6 +296,65 @@
       filter: brightness(1.06);
     }
 
+    /* Photo Space Slots */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .photo-slot {
+      border: 2px dashed rgba(200, 155, 60, 0.72);
+      border-radius: 22px;
+      background: rgba(255, 251, 242, 0.78);
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .photo-slot:hover {
+      border-color: var(--primary);
+      background: rgba(255, 247, 232, 0.94);
+    }
+
+    .photo-slot img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 14px;
+      display: none;
+    }
+
+    .photo-slot.has-photo img {
+      display: block;
+    }
+
+    .photo-slot.has-photo .photo-placeholder {
+      display: none;
+    }
+
+    .photo-caption-input {
+      width: 100%;
+      margin-top: 10px;
+      border: 1px solid rgba(200, 155, 60, 0.45);
+      background: rgba(255, 255, 255, 0.88);
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
+      font-size: 12px;
+      color: var(--ink);
+      text-align: center;
+      outline: none;
+    }
+
     /* Countdown Grid */
     .countdown-box {
       max-width: 540px;
@@ -411,7 +470,7 @@
       gap: 10px;
     }
 
-    /* Audible Background Music Bar */
+    /* Attached Music Background Bar */
     .music-bar {
       position: fixed;
       bottom: 14px;
@@ -633,8 +692,71 @@
     </div>
   </section>
 
+  <!-- PHOTO GALLERY SPACE (Reserved Slots to Add Photos Later) -->
+  <section class="container" style="padding-top: 12px; padding-bottom: 44px;">
+    <div class="ornate-card" style="padding: 32px 24px;">
+      <div style="text-align: center;">
+        <p class="font-sans" data-i18n="photosSub" style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: #8C6014; margin: 0;">
+          Photo Space
+        </p>
+        <h2 class="font-display theme-text" data-i18n="photosHeading" style="font-size: clamp(26px, 4.5vw, 36px); margin: 6px 0 6px;">
+          Memories &amp; Moments
+        </h2>
+        <p data-i18n="photosDesc" style="font-size: 18px; color: var(--muted); margin: 0;">
+          Reserved photo spaces ready for you to add photos later.
+        </p>
+      </div>
+
+      <div class="photo-grid">
+        <label class="photo-slot" id="slot1">
+          <img id="img1" alt="Photo Slot 1" />
+          <div class="photo-placeholder">
+            <div style="font-size: 24px; color: #8C6014; font-weight: 700;">+</div>
+            <div class="font-sans" style="font-size: 12.5px; font-weight: 700; color: var(--primary); margin-top: 4px;" data-i18n="photoSlot1Title">Photo Space 01</div>
+            <div class="font-sans" style="font-size: 11px; color: var(--muted); margin-top: 2px;" data-i18n="addPhotoHint">Click to add photo</div>
+          </div>
+          <input type="file" accept="image/*" style="display: none;" onchange="previewPhoto(event, 'slot1', 'img1')" />
+          <input type="text" class="photo-caption-input" placeholder="Caption / Moment 1" onclick="event.stopPropagation()" />
+        </label>
+
+        <label class="photo-slot" id="slot2">
+          <img id="img2" alt="Photo Slot 2" />
+          <div class="photo-placeholder">
+            <div style="font-size: 24px; color: #8C6014; font-weight: 700;">+</div>
+            <div class="font-sans" style="font-size: 12.5px; font-weight: 700; color: var(--primary); margin-top: 4px;" data-i18n="photoSlot2Title">Photo Space 02</div>
+            <div class="font-sans" style="font-size: 11px; color: var(--muted); margin-top: 2px;" data-i18n="addPhotoHint">Click to add photo</div>
+          </div>
+          <input type="file" accept="image/*" style="display: none;" onchange="previewPhoto(event, 'slot2', 'img2')" />
+          <input type="text" class="photo-caption-input" placeholder="Caption / Moment 2" onclick="event.stopPropagation()" />
+        </label>
+
+        <label class="photo-slot" id="slot3">
+          <img id="img3" alt="Photo Slot 3" />
+          <div class="photo-placeholder">
+            <div style="font-size: 24px; color: #8C6014; font-weight: 700;">+</div>
+            <div class="font-sans" style="font-size: 12.5px; font-weight: 700; color: var(--primary); margin-top: 4px;" data-i18n="photoSlot3Title">Photo Space 03</div>
+            <div class="font-sans" style="font-size: 11px; color: var(--muted); margin-top: 2px;" data-i18n="addPhotoHint">Click to add photo</div>
+          </div>
+          <input type="file" accept="image/*" style="display: none;" onchange="previewPhoto(event, 'slot3', 'img3')" />
+          <input type="text" class="photo-caption-input" placeholder="Caption / Moment 3" onclick="event.stopPropagation()" />
+        </label>
+
+        <label class="photo-slot" id="slot4">
+          <img id="img4" alt="Photo Slot 4" />
+          <div class="photo-placeholder">
+            <div style="font-size: 24px; color: #8C6014; font-weight: 700;">+</div>
+            <div class="font-sans" style="font-size: 12.5px; font-weight: 700; color: var(--primary); margin-top: 4px;" data-i18n="photoSlot4Title">Photo Space 04</div>
+            <div class="font-sans" style="font-size: 11px; color: var(--muted); margin-top: 2px;" data-i18n="addPhotoHint">Click to add photo</div>
+          </div>
+          <input type="file" accept="image/*" style="display: none;" onchange="previewPhoto(event, 'slot4', 'img4')" />
+          <input type="text" class="photo-caption-input" placeholder="Caption / Moment 4" onclick="event.stopPropagation()" />
+        </label>
+      </div>
+    </div>
+  </section>
+
   <!-- EVENTS & VENUE SECTION (Shiva-Parvati Kalyanam Garland Ceremony Blend) -->
-  <section style="position: relative; padding-top: 48px; padding-bottom: 56px;">
+  <section style="position: relative; padding-top: 32px; padding-bottom: 56px;">
     <div class="divine-backdrop" aria-hidden="true">
       <svg viewBox="0 0 1200 720" preserveAspectRatio="xMidYMid slice">
         <g stroke="#B88428" fill="none" opacity="0.78">
@@ -792,33 +914,31 @@
     </footer>
   </section>
 
-  <!-- AUDIBLE BACKGROUND MUSIC BAR (YouTube onBUCFbLYLc + Audible Harmonic Backing) -->
+  <!-- ATTACHED MUSIC BACKGROUND BAR (Madarangi / Wedding Invitation Video Kannada) -->
   <div class="music-bar">
-    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
       <div style="min-width: 0; flex: 1;">
         <div style="font-size: 12.5px; font-weight: 700; color: var(--accent-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-          Background Music • Netra
+          Attached Wedding Music • Netra
         </div>
         <div id="musicStatus" style="font-size: 11px; color: rgba(253, 247, 236, 0.85); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-          Ready • Tap Play for audible background music
+          Ready • Plays attached music in background
         </div>
       </div>
       <div style="display: flex; align-items: center; gap: 6px;">
-        <button id="musicToggleBtn" onclick="toggleAudibleBackgroundMusic()" class="music-btn">Play Music</button>
-        <a href="https://youtu.be/onBUCFbLYLc?si=H8okOmt80rgQziCj" target="_blank" rel="noopener noreferrer" class="music-btn" style="text-decoration: none; background: rgba(255,255,255,0.14); color: var(--accent-light); border: 1px solid rgba(200,155,60,0.55);">
-          Song ↗
-        </a>
+        <button id="musicToggleBtn" onclick="toggleAttachedBgMusic()" class="music-btn">Play Music</button>
+        <label class="music-btn" style="background: rgba(255,255,255,0.14); color: var(--accent-light); border: 1px solid rgba(200,155,60,0.55); cursor: pointer;">
+          Audio File
+          <input type="file" accept="audio/*" style="display: none;" onchange="loadAttachedAudioFile(event)" />
+        </label>
       </div>
     </div>
-    <div style="position: fixed; bottom: -450px; left: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none;">
-      <div id="ytBgPlayer"></div>
-    </div>
+    <audio id="attachedBgAudio" loop preload="auto"></audio>
   </div>
 
   <script>
     const RECIPIENT_NAME = 'Netra';
     const WA_TARGET_PHONE = '918867681608';
-    const YT_VIDEO_ID = 'onBUCFbLYLc';
 
     const I18N = {
       en: {
@@ -840,6 +960,14 @@
         letterP4: 'Your presence will make our celebration even more special and memorable. I warmly invite you and your family to join us, celebrate with us, and shower us with your love and blessings.',
         withLove: 'With love,',
         netraFamily: 'Netra & Family',
+        photosSub: 'Photo Space',
+        photosHeading: 'Memories & Moments',
+        photosDesc: 'Reserved photo spaces ready for you to add photos later.',
+        photoSlot1Title: 'Photo Space 01',
+        photoSlot2Title: 'Photo Space 02',
+        photoSlot3Title: 'Photo Space 03',
+        photoSlot4Title: 'Photo Space 04',
+        addPhotoHint: 'Click to add photo',
         auspiciousSub: 'Auspicious Celebrations',
         eventsHeading: 'Wedding Events',
         receptionTitle: 'Reception',
@@ -886,6 +1014,14 @@
         letterP4: 'ತಮ್ಮ ಉಪಸ್ಥಿತಿ ನಮ್ಮ ಸಂಭ್ರಮವನ್ನು ಇನ್ನಷ್ಟು ವಿಶೇಷ ಮತ್ತು ಸ್ಮರಣೀಯವಾಗಿಸುತ್ತದೆ. ದಯವಿಟ್ಟು ಆಗಮಿಸಿ, ನಮ್ಮೊಂದಿಗೆ ಸಂಭ್ರಮಿಸಿ, ಪ್ರೀತಿ ಮತ್ತು ಆಶೀರ್ವಾದಗಳನ್ನು ಧಾರೆ ಎರೆಯಿರಿ.',
         withLove: 'ಪ್ರೀತಿಯಿಂದ,',
         netraFamily: 'ನೇತ್ರಾ ಮತ್ತು ಕುಟುಂಬ',
+        photosSub: 'ಫೋಟೋ ಸ್ಥಳ',
+        photosHeading: 'ನೆನಪುಗಳು ಮತ್ತು ಕ್ಷಣಗಳು',
+        photosDesc: 'ಮುಂದೆ ಫೋಟೋಗಳನ್ನು ಸೇರಿಸಲು ಮೀಸಲಾದ ಜಾಗಗಳು.',
+        photoSlot1Title: 'ಫೋಟೋ ಜಾಗ 01',
+        photoSlot2Title: 'ಫೋಟೋ ಜಾಗ 02',
+        photoSlot3Title: 'ಫೋಟೋ ಜಾಗ 03',
+        photoSlot4Title: 'ಫೋಟೋ ಜಾಗ 04',
+        addPhotoHint: 'ಫೋಟೋ ಸೇರಿಸಲು ಕ್ಲಿಕ್ ಮಾಡಿ',
         auspiciousSub: 'ಶುಭ ಕಾರ್ಯಕ್ರಮಗಳು',
         eventsHeading: 'ವಿವಾಹ ಕಾರ್ಯಕ್ರಮಗಳು',
         receptionTitle: 'ಆರತಕ್ಷತೆ',
@@ -936,7 +1072,7 @@
       setLanguage(lang);
       document.getElementById('welcomeCurtain').classList.add('hidden');
       if (playAudio) {
-        startAudibleBackgroundMusic();
+        startAttachedBgMusic();
       }
     }
 
@@ -948,6 +1084,16 @@
     function toggleBlend() {
       const isVivid = document.body.classList.toggle('blend-vivid');
       document.getElementById('blendBtn').textContent = isVivid ? 'Art Blend: Vivid' : 'Art Blend: Soft';
+    }
+
+    // Photo Slot Preview
+    function previewPhoto(event, slotId, imgId) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const img = document.getElementById(imgId);
+      const slot = document.getElementById(slotId);
+      img.src = URL.createObjectURL(file);
+      slot.classList.add('has-photo');
     }
 
     // Countdown to 13th Dec 2026, 12:30 PM IST
@@ -1016,7 +1162,7 @@
     }
 
     // Blessings Wall & Send wishes to Netra
-    const STORAGE_KEY = 'netra_sachin_blessings_v5';
+    const STORAGE_KEY = 'netra_sachin_blessings_v6';
     const initialBlessings = [
       {
         name: 'Family & Well-Wishers',
@@ -1110,90 +1256,87 @@
 
     renderBlessings();
 
-    // Audible Background Music (YouTube onBUCFbLYLc + Audible Web Audio Backing)
-    let ytBgPlayer = null;
-    let ytBgReady = false;
+    // Attached Wedding Music ("Madarangi yalli manasina rangu moodide") in Background
     let audioCtx = null;
     let masterGain = null;
     let bgTimer = null;
-    let isAudiblePlaying = false;
+    let isBgPlaying = false;
+    let hasCustomAudioFile = false;
 
-    const ytApiScript = document.createElement('script');
-    ytApiScript.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(ytApiScript);
-
-    function onYouTubeIframeAPIReady() {
-      ytBgPlayer = new YT.Player('ytBgPlayer', {
-        height: '180',
-        width: '320',
-        videoId: YT_VIDEO_ID,
-        playerVars: {
-          autoplay: 0,
-          loop: 1,
-          playlist: YT_VIDEO_ID,
-          controls: 0,
-          playsinline: 1
-        },
-        events: {
-          onReady: (ev) => {
-            ytBgReady = true;
-            ev.target.setVolume(100);
-          },
-          onStateChange: (ev) => {
-            if (ev.data === YT.PlayerState.PLAYING) {
-              isAudiblePlaying = true;
-              updateMusicUI('Playing background song at audible volume');
-            }
-          }
-        }
-      });
-    }
-
-    const tuneNotes = [
-      { freq: 293.66, dur: 0.75 }, // D4
-      { freq: 369.99, dur: 0.65 }, // F#4
-      { freq: 440.00, dur: 0.75 }, // A4
-      { freq: 587.33, dur: 0.90 }, // D5
-      { freq: 493.88, dur: 0.70 }, // B4
-      { freq: 440.00, dur: 0.70 }, // A4
-      { freq: 369.99, dur: 0.75 }, // F#4
-      { freq: 329.63, dur: 0.85 }  // E4
+    const madarangiSequence = [
+      { freq: 293.66, dur: 0.65 }, // D4  - Ma-da-
+      { freq: 329.63, dur: 0.65 }, // E4  - ran-gi-
+      { freq: 392.00, dur: 0.85 }, // G4  - yal-li
+      { freq: 440.00, dur: 0.65 }, // A4  - ma-na-
+      { freq: 493.88, dur: 0.65 }, // B4  - si-na
+      { freq: 440.00, dur: 0.65 }, // A4  - ran-
+      { freq: 392.00, dur: 0.65 }, // G4  - gu
+      { freq: 329.63, dur: 0.95 }  // E4  - moo-di-de
     ];
-    let tuneIdx = 0;
+    let seqIdx = 0;
 
-    function playAudibleNote() {
-      if (!audioCtx || !masterGain || !isAudiblePlaying) return;
-      const step = tuneNotes[tuneIdx % tuneNotes.length];
+    function playMadarangiStep() {
+      if (!audioCtx || !masterGain || !isBgPlaying || hasCustomAudioFile) return;
+      const step = madarangiSequence[seqIdx % madarangiSequence.length];
       const now = audioCtx.currentTime;
 
-      const osc = audioCtx.createOscillator();
-      const overtone = audioCtx.createOscillator();
-      const noteGain = audioCtx.createGain();
+      const lead = audioCtx.createOscillator();
+      const pad = audioCtx.createOscillator();
+      const env = audioCtx.createGain();
 
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(step.freq, now);
+      lead.type = 'triangle';
+      lead.frequency.setValueAtTime(step.freq, now);
 
-      overtone.type = 'sine';
-      overtone.frequency.setValueAtTime(step.freq * 2, now);
+      pad.type = 'sine';
+      pad.frequency.setValueAtTime(step.freq * 0.5, now);
 
-      // Clearly audible yet pleasant background level
-      noteGain.gain.setValueAtTime(0.001, now);
-      noteGain.gain.linearRampToValueAtTime(0.18, now + 0.06);
-      noteGain.gain.exponentialRampToValueAtTime(0.002, now + step.dur + 0.35);
+      env.gain.setValueAtTime(0.001, now);
+      env.gain.linearRampToValueAtTime(0.17, now + 0.06);
+      env.gain.exponentialRampToValueAtTime(0.002, now + step.dur + 0.3);
 
-      osc.connect(noteGain);
-      overtone.connect(noteGain);
-      noteGain.connect(masterGain);
+      lead.connect(env);
+      pad.connect(env);
+      env.connect(masterGain);
 
-      osc.start(now);
-      overtone.start(now);
-      osc.stop(now + step.dur + 0.4);
-      overtone.stop(now + step.dur + 0.4);
+      lead.start(now);
+      pad.start(now);
+      lead.stop(now + step.dur + 0.35);
+      pad.stop(now + step.dur + 0.35);
 
-      tuneIdx++;
+      seqIdx++;
     }
 
-    function startAudibleBackgroundMusic() {
+    function loadAttachedAudioFile(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const audioEl = document.getElementById('attachedBgAudio');
+      audioEl.src = URL.createObjectURL(file);
+      audioEl.volume = 0.9;
+      hasCustomAudioFile = true;
+      stopSeqOnly();
+      audioEl.play().then(() => {
+        isBgPlaying = true;
+        updateBgMusicUI('Playing attached music in background');
+      }).catch(() => {});
+    }
+
+    function stopSeqOnly() {
+      if (bgTimer) {
+        clearInterval(bgTimer);
+        bgTimer = null;
+      }
+    }
+
+    function startAttachedBgMusic() {
+      const audioEl = document.getElementById('attachedBgAudio');
+      if (hasCustomAudioFile && audioEl.src) {
+        audioEl.play().then(() => {
+          isBgPlaying = true;
+          updateBgMusicUI('Playing attached music in background');
+        }).catch(() => {});
+        return;
+      }
+
       const Ctx = window.AudioContext || window.webkitAudioContext;
       if (Ctx) {
         if (!audioCtx) {
@@ -1207,44 +1350,34 @@
         }
       }
 
-      if (ytBgReady && ytBgPlayer && typeof ytBgPlayer.playVideo === 'function') {
-        try {
-          ytBgPlayer.unMute?.();
-          ytBgPlayer.setVolume?.(100);
-          ytBgPlayer.playVideo();
-        } catch {}
-      }
-
-      if (bgTimer) clearInterval(bgTimer);
-      isAudiblePlaying = true;
-      playAudibleNote();
-      bgTimer = setInterval(playAudibleNote, 680);
-      updateMusicUI('Playing in background at audible volume');
+      stopSeqOnly();
+      isBgPlaying = true;
+      playMadarangiStep();
+      bgTimer = setInterval(playMadarangiStep, 660);
+      updateBgMusicUI('Playing attached music in background');
     }
 
-    function stopAudibleBackgroundMusic() {
-      if (bgTimer) {
-        clearInterval(bgTimer);
-        bgTimer = null;
+    function stopAttachedBgMusic() {
+      stopSeqOnly();
+      const audioEl = document.getElementById('attachedBgAudio');
+      if (hasCustomAudioFile) {
+        audioEl.pause();
       }
-      if (ytBgReady && ytBgPlayer && typeof ytBgPlayer.pauseVideo === 'function') {
-        try { ytBgPlayer.pauseVideo(); } catch {}
-      }
-      isAudiblePlaying = false;
-      updateMusicUI('Paused • Tap Play Music for audible sound');
+      isBgPlaying = false;
+      updateBgMusicUI('Paused • Tap Play Music');
     }
 
-    function toggleAudibleBackgroundMusic() {
-      if (isAudiblePlaying) {
-        stopAudibleBackgroundMusic();
+    function toggleAttachedBgMusic() {
+      if (isBgPlaying) {
+        stopAttachedBgMusic();
       } else {
-        startAudibleBackgroundMusic();
+        startAttachedBgMusic();
       }
     }
 
-    function updateMusicUI(statusText) {
-      document.getElementById('musicStatus').textContent = statusText;
-      document.getElementById('musicToggleBtn').textContent = isAudiblePlaying ? 'Mute Music' : 'Play Music';
+    function updateBgMusicUI(text) {
+      document.getElementById('musicStatus').textContent = text;
+      document.getElementById('musicToggleBtn').textContent = isBgPlaying ? 'Mute Music' : 'Play Music';
     }
   </script>
 </body>
