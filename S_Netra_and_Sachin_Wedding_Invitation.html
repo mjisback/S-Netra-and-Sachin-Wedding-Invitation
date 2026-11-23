@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S. Netra &amp; Sachin — Wedding Invitation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            parchment: '#FDF7EC',
+            parchmentDeep: '#F5E7CE',
+            maroon: '#6A1421',
+            maroonDark: '#470B14',
+            emeraldRoyal: '#163A2B',
+            gold: '#C89B3C',
+            goldLight: '#E8C97A',
+            ink: '#2E1A18'
+          },
+          fontFamily: {
+            script: ['"Great Vibes"', 'cursive'],
+            display: ['"Cinzel Decorative"', 'serif'],
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --primary: #6A1421;
+      --primary-dark: #470B14;
+      --bg-opacity: 0.24;
+    }
+    body.theme-emerald {
+      --primary: #163A2B;
+      --primary-dark: #0E261C;
+    }
+    body.backdrop-vivid {
+      --bg-opacity: 0.52;
+    }
+    body {
+      background-color: #FDF7EC;
+      color: #2E1A18;
+      font-family: 'Cormorant Garamond', serif;
+      overflow-x: hidden;
+    }
+    .theme-text { color: var(--primary); }
+    .theme-bg { background-color: var(--primary); }
+    .theme-border { border-color: var(--primary); }
+    .gold-foil {
+      background: linear-gradient(135deg, #9C6F1C 0%, #DFB858 35%, #FFF1BA 50%, #C6932C 70%, #8C6014 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .shiva-parvati-layer {
+      opacity: var(--bg-opacity);
+      transition: opacity 0.45s ease;
+    }
+    .ornate-card {
+      background: rgba(253, 247, 236, 0.90);
+      backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(200, 155, 60, 0.55);
+      box-shadow: 0 18px 45px -15px rgba(71, 11, 20, 0.16), inset 0 0 0 4px rgba(253, 247, 236, 0.8), inset 0 0 0 5px rgba(200, 155, 60, 0.35);
+    }
+    @keyframes gentleSway {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
+    }
+    .bell-sway {
+      transform-origin: top center;
+      animation: gentleSway 4.2s ease-in-out infinite;
+    }
+    .bell-sway-delay {
+      transform-origin: top center;
+      animation: gentleSway 4.8s ease-in-out 1.2s infinite;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-amber-200/60">
+
+  <!-- Welcome Blessing Curtain -->
+  <div id="welcomeCurtain" class="fixed inset-0 z-50 flex items-center justify-center bg-[#3A0911]/95 px-4 text-center backdrop-blur-md transition-opacity duration-700">
+    <div class="max-w-lg rounded-2xl border border-[#C89B3C]/60 bg-[#FDF7EC] p-8 shadow-2xl sm:p-10">
+      <p class="font-serif text-base font-semibold tracking-widest text-[#8C6014]">॥ ಶ್ರೀ ಶಿವಪಾರ್ವತಿ ಕಲ್ಯಾಣ ಪ್ರಸನ್ನ ॥</p>
+      <div class="my-4 flex items-center justify-center gap-3 text-[#C89B3C]">
+        <span class="h-px w-12 bg-[#C89B3C]/60"></span>
+        <span>✦</span>
+        <span class="h-px w-12 bg-[#C89B3C]/60"></span>
+      </div>
+      <p class="font-serif text-lg italic text-stone-700">With the blessings of our families</p>
+      <h2 class="mt-2 font-script text-5xl text-[#6A1421] sm:text-6xl">S. Netra &amp; Sachin</h2>
+      <p class="mt-3 font-sans text-xs uppercase tracking-[0.22em] text-stone-600">12th &amp; 13th December 2026 • Ranebennur</p>
+      <button onclick="openInvitation(true)" class="mt-7 inline-flex items-center gap-2.5 rounded-full bg-[#6A1421] px-7 py-3.5 font-sans text-sm font-semibold text-[#FDF7EC] shadow-lg transition hover:scale-[1.02] hover:bg-[#470B14]">
+        <span>Open Invitation &amp; Play Music (0:28)</span>
+      </button>
+      <div class="mt-3">
+        <button onclick="openInvitation(false)" class="font-sans text-xs text-stone-500 underline-offset-4 hover:text-stone-800 hover:underline">Enter silently without music</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Utility Controls -->
+  <div class="fixed top-3 left-3 right-3 z-40 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
+    <div class="pointer-events-auto flex items-center gap-2 rounded-full border border-[#C89B3C]/50 bg-[#FDF7EC]/90 px-3 py-1.5 shadow-md backdrop-blur">
+      <button onclick="toggleTheme()" id="themeBtn" class="font-sans text-xs font-medium text-[#6A1421] hover:opacity-80">Theme: Maroon</button>
+      <span class="text-[#C89B3C]">|</span>
+      <button onclick="toggleBackdrop()" id="backdropBtn" class="font-sans text-xs font-medium text-stone-700 hover:opacity-80">Backdrop: Soft</button>
+    </div>
+    <div class="pointer-events-auto flex items-center gap-2 rounded-full border border-[#C89B3C]/50 bg-[#FDF7EC]/90 px-3 py-1.5 shadow-md backdrop-blur">
+      <button onclick="shareInvite()" class="font-sans text-xs font-medium text-stone-700 hover:text-[#6A1421]">Share Invite</button>
+    </div>
+  </div>
+
+  <!-- HERO & INVITATION LETTER SECTION (with Shiva-Parvati Kailash Divine Love Backdrop) -->
+  <section class="relative overflow-hidden pt-20 pb-16 sm:pt-24 sm:pb-24">
+    <!-- Sacred Shiva-Parvati Kailash Divine Artwork Layer -->
+    <div class="shiva-parvati-layer pointer-events-none absolute inset-0 flex items-center justify-center">
+      <svg viewBox="0 0 1200 800" class="h-full w-full object-cover" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <radialGradient id="kailashAura" cx="50%" cy="44%" r="45%">
+            <stop offset="0%" stop-color="#FFE699" stop-opacity="0.95" />
+            <stop offset="45%" stop-color="#E8B858" stop-opacity="0.45" />
+            <stop offset="100%" stop-color="#FDF7EC" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="mountGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#D7C3A3" stop-opacity="0.65" />
+            <stop offset="100%" stop-color="#FDF7EC" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <!-- Mount Kailash Silhouette -->
+        <polygon points="600,70 310,490 890,490" fill="url(#mountGrad)" />
+        <polygon points="390,190 140,540 640,540" fill="url(#mountGrad)" opacity="0.6" />
+        <polygon points="810,190 560,540 1060,540" fill="url(#mountGrad)" opacity="0.6" />
+        <!-- Celestial Prabhavali Halo -->
+        <circle cx="600" cy="360" r="240" fill="url(#kailashAura)" />
+        <circle cx="600" cy="360" r="185" fill="none" stroke="#B88428" stroke-width="4" stroke-dasharray="10 6" />
+        <circle cx="600" cy="360" r="170" fill="none" stroke="#8C5811" stroke-width="2" />
+        <!-- Sacred Shiva & Parvati Divine Silhouette Emblem -->
+        <g transform="translate(600, 375)" fill="#7A3B2E" stroke="#6A1421" stroke-width="1.5">
+          <!-- Lord Shiva (Left) -->
+          <path d="M-55,-65 C-55,-95 -20,-95 -20,-65 C-20,-42 -55,-42 -55,-65 Z" />
+          <!-- Jata Crown & Crescent Moon -->
+          <path d="M-47,-88 C-47,-112 -28,-112 -28,-88 Z" />
+          <path d="M-24,-96 A10,10 0 1,0 -14,-86 A8,8 0 1,1 -24,-96 Z" fill="#C89B3C" />
+          <!-- Shiva Torso & Shoulder -->
+          <path d="M-85,45 C-85,-15 -65,-38 -37,-38 C-12,-38 2,-18 5,45 Z" />
+          <!-- Goddess Parvati (Right, leaning affectionately) -->
+          <path d="M18,-56 C18,-82 48,-82 48,-56 C48,-36 18,-36 18,-56 Z" />
+          <!-- Parvati Mukuta Crown -->
+          <path d="M24,-78 L33,-98 L42,-78 Z" fill="#C89B3C" />
+          <!-- Parvati Saree Silhouette -->
+          <path d="M-2,45 C2,-10 15,-30 35,-30 C58,-30 76,-8 82,45 Z" />
+          <!-- Joined Hands / Garland of Union -->
+          <path d="M-45,-15 Q0,35 42,-12" fill="none" stroke="#C89B3C" stroke-width="4" />
+        </g>
+        <!-- Lotus Petals Base -->
+        <g transform="translate(600, 520)" fill="#D98A8C" opacity="0.7">
+          <ellipse cx="0" cy="0" rx="90" ry="18" />
+          <ellipse cx="-55" cy="6" rx="50" ry="12" />
+          <ellipse cx="55" cy="6" rx="50" ry="12" />
+        </g>
+      </svg>
+    </div>
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#FDF7EC]/75 via-[#FDF7EC]/55 to-[#FDF7EC]"></div>
+
+    <!-- Swaying Brass Temple Bells -->
+    <svg class="bell-sway pointer-events-none absolute top-0 left-4 h-36 w-16 sm:left-12 sm:h-44" viewBox="0 0 60 180" aria-hidden="true">
+      <line x1="30" y1="0" x2="30" y2="95" stroke="#B88428" stroke-width="2.5" stroke-dasharray="4 2" />
+      <path d="M18,95 Q30,82 42,95 L48,132 Q30,140 12,132 Z" fill="#D4A23A" stroke="#8C6014" stroke-width="1.5" />
+      <circle cx="30" cy="138" r="5" fill="#8C6014" />
+    </svg>
+    <svg class="bell-sway-delay pointer-events-none absolute top-0 right-4 h-36 w-16 sm:right-12 sm:h-44" viewBox="0 0 60 180" aria-hidden="true">
+      <line x1="30" y1="0" x2="30" y2="95" stroke="#B88428" stroke-width="2.5" stroke-dasharray="4 2" />
+      <path d="M18,95 Q30,82 42,95 L48,132 Q30,140 12,132 Z" fill="#D4A23A" stroke="#8C6014" stroke-width="1.5" />
+      <circle cx="30" cy="138" r="5" fill="#8C6014" />
+    </svg>
+
+    <div class="relative z-10 mx-auto max-w-3xl px-4 text-center">
+      <p class="font-serif text-base font-semibold tracking-widest text-[#8C6014] sm:text-lg">॥ ಶ್ರೀ ಶಿವಪಾರ್ವತಿ ಕಲ್ಯಾಣ ಪ್ರಸನ್ನ ॥</p>
+      <p class="mt-2 font-serif text-lg italic text-stone-700 sm:text-xl">🌸 With the blessings of our families 🌸</p>
+      <p class="mt-1 font-serif text-base italic text-[#8C6014]">“Two Hearts... One Journey... Forever Together...”</p>
+
+      <h1 class="gold-foil mt-5 font-script text-6xl leading-tight sm:text-7xl">Save the Date</h1>
+      <p class="mt-1 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-stone-600">For the Wedding Celebration of</p>
+
+      <div class="mt-4">
+        <span class="theme-text font-script text-6xl font-normal sm:text-8xl">S. Netra &amp; Sachin</span>
+      </div>
+
+      <!-- Interlocking Gold Rings Vector -->
+      <div class="my-5 flex items-center justify-center">
+        <svg class="h-12 w-28" viewBox="0 0 120 50" aria-hidden="true">
+          <circle cx="46" cy="26" r="16" fill="none" stroke="#C89B3C" stroke-width="3.5" />
+          <circle cx="74" cy="26" r="16" fill="none" stroke="#9C6F1C" stroke-width="3.5" />
+          <polygon points="46,6 42,11 50,11" fill="#E8C97A" />
+        </svg>
+      </div>
+
+      <!-- Live Countdown -->
+      <div class="mx-auto mt-6 max-w-xl rounded-2xl border border-[#C89B3C]/50 bg-[#FDF7EC]/85 px-4 py-4 shadow-sm backdrop-blur">
+        <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-stone-500">Countdown to Muhurtham • 13 Dec 2026, 12:30 PM</p>
+        <div id="countdownGrid" class="mt-2.5 grid grid-cols-4 gap-2 text-center">
+          <div class="rounded-xl bg-white/70 py-2">
+            <div id="cdDays" class="theme-text font-display text-2xl font-bold sm:text-3xl">--</div>
+            <div class="font-sans text-[10px] uppercase tracking-wider text-stone-500">Days</div>
+          </div>
+          <div class="rounded-xl bg-white/70 py-2">
+            <div id="cdHours" class="theme-text font-display text-2xl font-bold sm:text-3xl">--</div>
+            <div class="font-sans text-[10px] uppercase tracking-wider text-stone-500">Hours</div>
+          </div>
+          <div class="rounded-xl bg-white/70 py-2">
+            <div id="cdMins" class="theme-text font-display text-2xl font-bold sm:text-3xl">--</div>
+            <div class="font-sans text-[10px] uppercase tracking-wider text-stone-500">Minutes</div>
+          </div>
+          <div class="rounded-xl bg-white/70 py-2">
+            <div id="cdSecs" class="theme-text font-display text-2xl font-bold sm:text-3xl">--</div>
+            <div class="font-sans text-[10px] uppercase tracking-wider text-stone-500">Seconds</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal Invitation Letter Card -->
+      <div class="ornate-card mx-auto mt-10 max-w-2xl rounded-3xl px-6 py-8 text-center sm:px-12 sm:py-10">
+        <p class="theme-text font-serif text-2xl font-semibold">Dear Friends,</p>
+        <p class="mt-4 font-serif text-xl leading-relaxed text-stone-800">
+          I am delighted to invite you and your family to celebrate one of the most special moments of my life – <em class="font-semibold">my wedding!</em> 💍❤️
+        </p>
+        <p class="theme-text mt-3 font-serif text-2xl font-bold">Sachin &amp; I are tying the knot! 🥰🙏</p>
+        <p class="mt-4 font-serif text-xl leading-relaxed text-stone-800">
+          It would mean so much to me and my family to have you and your family join us on this special occasion and bless us as we begin this beautiful new chapter of our lives.
+        </p>
+        <p class="mt-4 font-serif text-xl leading-relaxed text-stone-800">
+          Your presence will make our celebration even more special and memorable. I warmly invite you and your family to join us, celebrate with us, and shower us with your love and blessings. ✨
+        </p>
+        <div class="mt-6 border-t border-[#C89B3C]/40 pt-5">
+          <p class="font-serif text-lg italic text-stone-600">With love,</p>
+          <p class="theme-text mt-1 font-script text-4xl">Netra &amp; Family 💕</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CEREMONIES & VENUE SECTION (with Shiva-Parvati Kalyanam Garland Ceremony Backdrop) -->
+  <section class="relative overflow-hidden py-16 sm:py-20">
+    <div class="shiva-parvati-layer pointer-events-none absolute inset-0 flex items-center justify-center">
+      <svg viewBox="0 0 1200 700" class="h-full w-full object-cover" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <!-- Temple Mandapam Pillars & Arch -->
+        <g stroke="#B88428" fill="none" opacity="0.75">
+          <rect x="220" y="90" width="26" height="520" stroke-width="2.5" />
+          <rect x="954" y="90" width="26" height="520" stroke-width="2.5" />
+          <path d="M220,140 Q600,40 980,140" stroke-width="4" />
+          <path d="M246,165 Q600,75 954,165" stroke-width="2" stroke-dasharray="8 6" />
+          <!-- Mango Leaf Torana Garlands -->
+          <path d="M246,155 Q420,225 600,155 Q780,225 954,155" stroke="#8C6014" stroke-width="2.5" />
+        </g>
+        <!-- Sacred Homakunda Fire & Divine Couple Exchanging Garlands -->
+        <g transform="translate(600, 380)">
+          <circle cx="0" cy="-20" r="190" fill="#E8C97A" opacity="0.28" />
+          <!-- Shiva Standing Left -->
+          <circle cx="-65" cy="-85" r="20" fill="#7A3B2E" />
+          <path d="M-95,90 L-90,-50 Q-65,-62 -40,-50 L-35,90 Z" fill="#7A3B2E" />
+          <!-- Parvati Standing Right -->
+          <circle cx="65" cy="-78" r="18" fill="#6A1421" />
+          <path d="M38,90 L43,-45 Q65,-56 87,-45 L94,90 Z" fill="#6A1421" />
+          <!-- Varmala Garlands Between Them -->
+          <path d="M-45,-42 Q0,18 45,-42" fill="none" stroke="#C89B3C" stroke-width="5" />
+          <path d="M-42,-30 Q0,32 42,-30" fill="none" stroke="#9C6F1C" stroke-width="4" />
+          <!-- Sacred Agni Flame -->
+          <path d="M0,45 C-16,70 -12,92 0,95 C12,92 16,70 0,45 Z" fill="#D97724" opacity="0.85" />
+        </g>
+      </svg>
+    </div>
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#FDF7EC] via-[#FDF7EC]/65 to-[#FDF7EC]"></div>
+
+    <div class="relative z-10 mx-auto max-w-4xl px-4">
+      <div class="text-center">
+        <p class="font-sans text-xs font-semibold uppercase tracking-[0.26em] text-[#8C6014]">Auspicious Celebrations</p>
+        <h2 class="theme-text mt-2 font-display text-3xl font-bold sm:text-4xl">Wedding Events</h2>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        <!-- Reception Card -->
+        <div class="ornate-card rounded-3xl p-8 text-center">
+          <div class="theme-bg mx-auto inline-block rounded-full px-6 py-1.5 font-script text-3xl text-[#FDF7EC] shadow">Reception</div>
+          <div class="mt-6 space-y-2 font-serif text-xl text-stone-800">
+            <p class="font-semibold">📅 12th December 2026, Saturday</p>
+            <p class="font-semibold text-[#8C6014]">⏰ 7:30 PM onwards</p>
+            <p class="pt-2 text-base text-stone-600">Evening fellowship, musical celebration &amp; dinner with family and friends.</p>
+          </div>
+          <button onclick="downloadICS('reception')" class="mt-6 inline-flex items-center gap-2 rounded-full border border-[#C89B3C] bg-white/80 px-5 py-2 font-sans text-xs font-semibold text-[#6A1421] transition hover:bg-[#6A1421] hover:text-white">
+            <span>+ Add Reception to Calendar</span>
+          </button>
+        </div>
+
+        <!-- Wedding Muhurtham Card -->
+        <div class="ornate-card rounded-3xl p-8 text-center">
+          <div class="theme-bg mx-auto inline-block rounded-full px-6 py-1.5 font-script text-3xl text-[#FDF7EC] shadow">Wedding</div>
+          <div class="mt-6 space-y-2 font-serif text-xl text-stone-800">
+            <p class="font-semibold">📅 13th December 2026, Sunday</p>
+            <p class="font-semibold text-[#8C6014]">⏰ 12:30 PM – Muhurtham</p>
+            <p class="pt-2 text-base text-stone-600">Sacred Mangalya Dharana ceremony followed by traditional wedding feast.</p>
+          </div>
+          <button onclick="downloadICS('wedding')" class="mt-6 inline-flex items-center gap-2 rounded-full border border-[#C89B3C] bg-white/80 px-5 py-2 font-sans text-xs font-semibold text-[#6A1421] transition hover:bg-[#6A1421] hover:text-white">
+            <span>+ Add Muhurtham to Calendar</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Venue Card -->
+      <div class="ornate-card mt-8 rounded-3xl p-8 text-center sm:p-10">
+        <p class="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-[#8C6014]">📍 Wedding &amp; Reception Venue</p>
+        <h3 class="theme-text mt-2 font-serif text-3xl font-bold sm:text-4xl">Sri Siddeshwara Kalyana Mantapa</h3>
+        <p id="venueAddressText" class="mt-1 font-serif text-xl text-stone-700">Ranebennur, Karnataka – 581115</p>
+
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <a href="https://maps.app.goo.gl/imAc57pK9dMQYaoe9" target="_blank" rel="noopener noreferrer" class="theme-bg inline-flex items-center gap-2 rounded-full px-7 py-3 font-sans text-sm font-semibold text-[#FDF7EC] shadow-md transition hover:opacity-90">
+            <span>Open in Google Maps</span>
+          </a>
+          <button onclick="copyVenueAddress()" id="copyAddrBtn" class="inline-flex items-center gap-2 rounded-full border border-[#C89B3C] bg-white/85 px-6 py-3 font-sans text-sm font-semibold text-stone-800 transition hover:bg-amber-50">
+            <span>Copy Address</span>
+          </button>
+        </div>
+
+        <div class="mt-6 overflow-hidden rounded-2xl border border-[#C89B3C]/40">
+          <iframe
+            title="Sri Siddeshwara Kalyana Mantapa Ranebennur Map"
+            src="https://www.google.com/maps?q=Sri+Siddeshwara+Kalyana+Mantapa+Ranebennur+Karnataka+581115&output=embed"
+            class="h-60 w-full border-0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP & BLESSINGS WALL SECTION -->
+  <section class="relative mx-auto max-w-4xl px-4 pt-6 pb-28">
+    <div class="ornate-card rounded-3xl p-6 sm:p-10">
+      <div class="text-center">
+        <p class="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-[#8C6014]">Kindly Respond</p>
+        <h2 class="theme-text mt-1 font-display text-3xl font-bold">RSVP &amp; Blessings Wall</h2>
+        <p class="mt-1 font-serif text-lg text-stone-700">Let Netra &amp; Sachin know you will be joining, and leave your heartfelt wishes.</p>
+      </div>
+
+      <form onsubmit="handleRSVPSubmit(event)" class="mt-7 grid gap-4 sm:grid-cols-2">
+        <div>
+          <label class="block font-sans text-xs font-semibold uppercase tracking-wider text-stone-600">Your Name *</label>
+          <input id="guestName" type="text" required placeholder="e.g. Manjunath & Family" class="mt-1 w-full rounded-xl border border-[#C89B3C]/50 bg-white/90 px-4 py-2.5 font-sans text-sm focus:border-[#6A1421] focus:outline-none" />
+        </div>
+        <div>
+          <label class="block font-sans text-xs font-semibold uppercase tracking-wider text-stone-600">Attending Events</label>
+          <select id="guestEvent" class="mt-1 w-full rounded-xl border border-[#C89B3C]/50 bg-white/90 px-4 py-2.5 font-sans text-sm focus:border-[#6A1421] focus:outline-none">
+            <option value="Both Reception & Wedding">Both Reception (12 Dec) &amp; Wedding (13 Dec)</option>
+            <option value="Wedding Muhurtham (13 Dec)">Wedding Muhurtham (13 Dec, 12:30 PM)</option>
+            <option value="Reception (12 Dec)">Reception (12 Dec, 7:30 PM)</option>
+            <option value="Sending Warm Blessings">Sending Warm Blessings from Afar</option>
+          </select>
+        </div>
+        <div class="sm:col-span-2">
+          <label class="block font-sans text-xs font-semibold uppercase tracking-wider text-stone-600">Blessings &amp; Wishes for S. Netra &amp; Sachin *</label>
+          <textarea id="guestWish" rows="2" required placeholder="Write a blessing for the couple..." class="mt-1 w-full rounded-xl border border-[#C89B3C]/50 bg-white/90 px-4 py-2.5 font-sans text-sm focus:border-[#6A1421] focus:outline-none"></textarea>
+        </div>
+        <div class="sm:col-span-2 text-center">
+          <button type="submit" class="theme-bg rounded-full px-8 py-3 font-sans text-sm font-semibold text-[#FDF7EC] shadow-md transition hover:opacity-90">
+            Send RSVP &amp; Post Blessing
+          </button>
+        </div>
+      </form>
+
+      <div id="blessingsList" class="mt-8 grid gap-3 sm:grid-cols-2"></div>
+    </div>
+
+    <footer class="mt-10 text-center font-serif text-lg text-stone-600">
+      <p>With warm regards &amp; love, <strong class="theme-text">S. Netra &amp; Family</strong></p>
+      <p class="mt-1 font-sans text-xs text-stone-500">Sri Siddeshwara Kalyana Mantapa • Ranebennur, Karnataka – 581115</p>
+    </footer>
+  </section>
+
+  <!-- FLOATING BACKGROUND MUSIC BAR (Starts Kailasada Aa at 0:28) -->
+  <div class="fixed bottom-4 left-1/2 z-40 w-[94%] max-w-lg -translate-x-1/2">
+    <div class="rounded-2xl border border-[#C89B3C]/70 bg-[#3A0911]/95 px-4 py-2.5 text-[#FDF7EC] shadow-2xl backdrop-blur-md">
+      <div class="flex items-center justify-between gap-2">
+        <div class="min-w-0 flex-1">
+          <p class="truncate font-sans text-xs font-semibold text-[#E8C97A]">♪ Kailasada Aa (Lyrics from 0:28)</p>
+          <p id="musicStatusText" class="truncate font-sans text-[11px] text-amber-100/80">Ready • Starts at 0:28</p>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button onclick="toggleMusicPlay()" id="playPauseBtn" class="rounded-full bg-[#C89B3C] px-3.5 py-1.5 font-sans text-xs font-bold text-[#3A0911] transition hover:bg-[#E8C97A]">Play</button>
+          <button onclick="restartFrom28()" title="Restart lyrics at 0:28" class="rounded-full border border-[#C89B3C]/60 px-2.5 py-1.5 font-sans text-xs font-semibold text-[#E8C97A] hover:bg-white/10">↺ 0:28</button>
+          <button onclick="toggleAudioDrawer()" title="Audio Options" class="rounded-full border border-[#C89B3C]/60 px-2.5 py-1.5 font-sans text-xs text-[#E8C97A] hover:bg-white/10">⚙</button>
+        </div>
+      </div>
+
+      <!-- Expandable Audio Source Drawer -->
+      <div id="audioDrawer" class="mt-2.5 hidden border-t border-[#C89B3C]/30 pt-2.5 font-sans text-xs">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <a href="https://youtu.be/2awjZYBMCQI?t=28" target="_blank" rel="noopener noreferrer" class="text-[#E8C97A] underline">Open YouTube at 0:28 ↗</a>
+          <label class="cursor-pointer rounded-lg border border-[#C89B3C]/50 px-2.5 py-1 text-[11px] hover:bg-white/10">
+            Load Local MP3/WAV (Auto 0:28)
+            <input type="file" accept="audio/*" onchange="loadLocalAudio(event)" class="hidden" />
+          </label>
+        </div>
+      </div>
+    </div>
+    <!-- Hidden YouTube Player Container & Local Audio Element -->
+    <div id="ytPlayerWrap" class="pointer-events-none fixed -bottom-96 left-0 h-1 w-1 opacity-0">
+      <div id="ytPlayer"></div>
+    </div>
+    <audio id="localAudioEl" preload="auto"></audio>
+  </div>
+
+  <script>
+    // 1. Welcome Curtain & Music Trigger at 28s
+    let ytPlayer = null;
+    let ytReady = false;
+    let isPlaying = false;
+    let audioMode = 'youtube'; // 'youtube' | 'local' | 'synth'
+    let synthInterval = null;
+    let audioCtx = null;
+
+    // Load YouTube IFrame API
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+
+    function onYouTubeIframeAPIReady() {
+      ytPlayer = new YT.Player('ytPlayer', {
+        height: '180',
+        width: '320',
+        videoId: '2awjZYBMCQI',
+        playerVars: {
+          autoplay: 0,
+          start: 28,
+          loop: 1,
+          playlist: '2awjZYBMCQI',
+          controls: 0,
+          playsinline: 1
+        },
+        events: {
+          onReady: () => { ytReady = true; },
+          onStateChange: (e) => {
+            if (e.data === YT.PlayerState.PLAYING) {
+              isPlaying = true;
+              updateMusicUI('Playing • Kailasada Aa (from 0:28)');
+            } else if (e.data === YT.PlayerState.PAUSED) {
+              isPlaying = false;
+              updateMusicUI('Paused at ' + Math.floor(ytPlayer.getCurrentTime()) + 's');
+            }
+          },
+          onError: () => {
+            startSynthFallback();
+          }
+        }
+      });
+    }
+
+    function openInvitation(withMusic) {
+      const curtain = document.getElementById('welcomeCurtain');
+      curtain.classList.add('opacity-0');
+      setTimeout(() => curtain.classList.add('hidden'), 700);
+      if (withMusic) {
+        playMusicFrom28();
+      }
+    }
+
+    function playMusicFrom28() {
+      if (audioMode === 'local') {
+        const el = document.getElementById('localAudioEl');
+        if (el.currentTime < 28) el.currentTime = 28;
+        el.play().then(() => {
+          isPlaying = true;
+          updateMusicUI('Playing Local Audio (from 0:28)');
+        }).catch(() => startSynthFallback());
+        return;
+      }
+
+      if (ytReady && ytPlayer && typeof ytPlayer.seekTo === 'function') {
+        try {
+          ytPlayer.seekTo(28, true);
+          ytPlayer.playVideo();
+          isPlaying = true;
+          updateMusicUI('Playing • Kailasada Aa (0:28)');
+          setTimeout(() => {
+            if (ytPlayer.getPlayerState && ytPlayer.getPlayerState() !== 1) {
+              startSynthFallback();
+            }
+          }, 2200);
+        } catch (err) {
+          startSynthFallback();
+        }
+      } else {
+        startSynthFallback();
+      }
+    }
+
+    function toggleMusicPlay() {
+      if (isPlaying) {
+        if (audioMode === 'local') document.getElementById('localAudioEl').pause();
+        if (ytReady && ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
+        stopSynth();
+        isPlaying = false;
+        updateMusicUI('Music Paused');
+      } else {
+        if (audioMode === 'synth') {
+          startSynthFallback();
+        } else {
+          playMusicFrom28();
+        }
+      }
+    }
+
+    function restartFrom28() {
+      stopSynth();
+      if (audioMode === 'local') {
+        const el = document.getElementById('localAudioEl');
+        el.currentTime = 28;
+        el.play();
+        isPlaying = true;
+        updateMusicUI('Restarted at 0:28');
+      } else {
+        audioMode = 'youtube';
+        playMusicFrom28();
+      }
+    }
+
+    function loadLocalAudio(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      stopSynth();
+      if (ytReady && ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
+      const el = document.getElementById('localAudioEl');
+      el.src = URL.createObjectURL(file);
+      el.onloadedmetadata = () => {
+        el.currentTime = el.duration > 28 ? 28 : 0;
+        el.play();
+        audioMode = 'local';
+        isPlaying = true;
+        updateMusicUI('Playing: ' + file.name + ' (from 0:28)');
+      };
+    }
+
+    // Gentle Devotional Santoor & Temple Chimes Fallback
+    function startSynthFallback() {
+      audioMode = 'synth';
+      stopSynth();
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContext) return;
+      if (!audioCtx) audioCtx = new AudioContext();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 440.00, 392.00];
+      let step = 0;
+      const pluck = () => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = notes[step % notes.length];
+        gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0008, audioCtx.currentTime + 1.4);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 1.45);
+        step++;
+      };
+      pluck();
+      synthInterval = setInterval(pluck, 850);
+      isPlaying = true;
+      updateMusicUI('Playing Sacred Santoor Melody');
+    }
+
+    function stopSynth() {
+      if (synthInterval) {
+        clearInterval(synthInterval);
+        synthInterval = null;
+      }
+    }
+
+    function updateMusicUI(status) {
+      document.getElementById('musicStatusText').textContent = status;
+      document.getElementById('playPauseBtn').textContent = isPlaying ? 'Pause' : 'Play';
+    }
+
+    function toggleAudioDrawer() {
+      document.getElementById('audioDrawer').classList.toggle('hidden');
+    }
+
+    // 2. Theme & Backdrop Controls
+    function toggleTheme() {
+      const isEm = document.body.classList.toggle('theme-emerald');
+      document.getElementById('themeBtn').textContent = isEm ? 'Theme: Emerald' : 'Theme: Maroon';
+    }
+
+    function toggleBackdrop() {
+      const isVivid = document.body.classList.toggle('backdrop-vivid');
+      document.getElementById('backdropBtn').textContent = isVivid ? 'Backdrop: Vivid' : 'Backdrop: Soft';
+    }
+
+    // 3. Countdown Timer to 13th Dec 2026, 12:30 PM IST
+    const targetDate = new Date('2026-12-13T12:30:00+05:30').getTime();
+    function updateCountdown() {
+      const diff = targetDate - Date.now();
+      if (diff <= 0) {
+        document.getElementById('countdownGrid').innerHTML = '<div class="col-span-4 py-2 font-serif text-xl font-bold text-[#6A1421]">Blessedly Married! ❤️</div>';
+        return;
+      }
+      document.getElementById('cdDays').textContent = Math.floor(diff / 86400000);
+      document.getElementById('cdHours').textContent = String(Math.floor((diff / 3600000) % 24)).padStart(2, '0');
+      document.getElementById('cdMins').textContent = String(Math.floor((diff / 60000) % 60)).padStart(2, '0');
+      document.getElementById('cdSecs').textContent = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // 4. Calendar .ics Downloads & Venue Utilities
+    function downloadICS(type) {
+      const isRec = type === 'reception';
+      const title = isRec ? 'S. Netra & Sachin — Wedding Reception' : 'S. Netra & Sachin — Wedding Muhurtham';
+      const dtStart = isRec ? '20261212T193000' : '20261213T123000';
+      const dtEnd = isRec ? '20261212T223000' : '20261213T150000';
+      const ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'BEGIN:VEVENT',
+        'DTSTART;TZID=Asia/Kolkata:' + dtStart,
+        'DTEND;TZID=Asia/Kolkata:' + dtEnd,
+        'SUMMARY:' + title,
+        'LOCATION:Sri Siddeshwara Kalyana Mantapa, Ranebennur, Karnataka - 581115',
+        'DESCRIPTION:Join us to bless S. Netra & Sachin! Map: https://maps.app.goo.gl/imAc57pK9dMQYaoe9',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+      const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = isRec ? 'Netra_Sachin_Reception.ics' : 'Netra_Sachin_Wedding.ics';
+      a.click();
+    }
+
+    function copyVenueAddress() {
+      const addr = 'Sri Siddeshwara Kalyana Mantapa, Ranebennur, Karnataka - 581115 (https://maps.app.goo.gl/imAc57pK9dMQYaoe9)';
+      navigator.clipboard.writeText(addr);
+      const btn = document.getElementById('copyAddrBtn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Copy Address'; }, 2000);
+    }
+
+    function shareInvite() {
+      const shareText = 'You are warmly invited to the Wedding of S. Netra & Sachin on 12th & 13th Dec 2026 at Sri Siddeshwara Kalyana Mantapa, Ranebennur!';
+      if (navigator.share) {
+        navigator.share({ title: 'S. Netra & Sachin Wedding Invitation', text: shareText, url: window.location.href });
+      } else {
+        navigator.clipboard.writeText(shareText);
+        alert('Invitation message copied to clipboard!');
+      }
+    }
+
+    // 5. RSVP & Blessings Wall
+    const defaultBlessings = [
+      { name: 'With Love, Family & Friends', event: 'Both Reception & Wedding', wish: 'May Lord Shiva and Goddess Parvati bless S. Netra & Sachin with a lifetime of love, harmony, and endless happiness!' },
+      { name: 'Well-Wishers', event: 'Wedding Muhurtham (13 Dec)', wish: 'Heartiest congratulations on your union! Wishing you both a wonderful journey together.' }
+    ];
+
+    function renderBlessings() {
+      const saved = JSON.parse(localStorage.getItem('netra_sachin_blessings') || 'null') || defaultBlessings;
+      const container = document.getElementById('blessingsList');
+      container.innerHTML = saved.map(b => `
+        <div class="rounded-2xl border border-[#C89B3C]/40 bg-white/80 p-4 shadow-sm">
+          <div class="flex items-center justify-between gap-2">
+            <p class="theme-text font-serif text-lg font-bold">${b.name}</p>
+            <span class="rounded-full bg-amber-100/80 px-2.5 py-0.5 font-sans text-[10px] font-medium text-amber-900">${b.event}</span>
+          </div>
+          <p class="mt-1.5 font-serif text-base italic text-stone-700">“${b.wish}”</p>
+        </div>
+      `).join('');
+    }
+
+    function handleRSVPSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('guestName').value.trim();
+      const event = document.getElementById('guestEvent').value;
+      const wish = document.getElementById('guestWish').value.trim();
+      if (!name || !wish) return;
+      const saved = JSON.parse(localStorage.getItem('netra_sachin_blessings') || 'null') || [...defaultBlessings];
+      saved.unshift({ name, event, wish });
+      localStorage.setItem('netra_sachin_blessings', JSON.stringify(saved));
+      e.target.reset();
+      renderBlessings();
+    }
+
+    renderBlessings();
+  </script>
+</body>
+</html>
