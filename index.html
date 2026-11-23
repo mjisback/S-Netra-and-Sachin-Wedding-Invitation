@@ -9,25 +9,51 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Noto+Serif+Kannada:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --primary: #6A1421;
-      --primary-dark: #470B14;
-      --accent: #C89B3C;
-      --accent-light: #E8C97A;
-      --parchment: #FDF7EC;
-      --parchment-deep: #F4E4C7;
-      --ink: #2E1A18;
-      --muted: #6E5652;
-      --blend-opacity: 0.34;
+      --primary: #781224;
+      --primary-dark: #4A0814;
+      --primary-soft: rgba(120, 18, 36, 0.08);
+      --accent: #D4A338;
+      --accent-bright: #F5D67B;
+      --rose-blush: #F7D9DF;
+      --saffron-glow: #FBE1A6;
+      --parchment: #FFF9EE;
+      --parchment-warm: #F8E8CB;
+      --ink: #2C1518;
+      --muted: #6A4C50;
+      --blend-opacity: 0.42;
       --blend-mode: multiply;
     }
 
     body.theme-emerald {
-      --primary: #163A2B;
-      --primary-dark: #0D241A;
+      --primary: #144532;
+      --primary-dark: #0A271B;
+      --primary-soft: rgba(20, 69, 50, 0.08);
+      --accent: #D6A841;
+      --accent-bright: #F7DC88;
+      --rose-blush: #D6EDE2;
+      --saffron-glow: #F8E3A8;
+      --parchment: #FBFDF9;
+      --parchment-warm: #EBF4EE;
+      --ink: #12261E;
+      --muted: #4C685C;
+    }
+
+    body.theme-royal {
+      --primary: #3B1654;
+      --primary-dark: #210932;
+      --primary-soft: rgba(59, 22, 84, 0.08);
+      --accent: #DCB046;
+      --accent-bright: #FCE195;
+      --rose-blush: #EADCF7;
+      --saffron-glow: #FBE4AD;
+      --parchment: #FCF8FF;
+      --parchment-warm: #F2E7FC;
+      --ink: #231133;
+      --muted: #634C78;
     }
 
     body.blend-vivid {
-      --blend-opacity: 0.62;
+      --blend-opacity: 0.68;
       --blend-mode: normal;
     }
 
@@ -41,15 +67,20 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
       background-color: var(--parchment);
       background-image:
-        radial-gradient(circle at 18% 12%, rgba(232, 201, 122, 0.24) 0%, transparent 45%),
-        radial-gradient(circle at 82% 88%, rgba(200, 155, 60, 0.18) 0%, transparent 50%),
-        linear-gradient(180deg, #FFFBF2 0%, #FDF7EC 48%, #F8EBD3 100%);
+        radial-gradient(circle at 14% 10%, var(--saffron-glow) 0%, transparent 42%),
+        radial-gradient(circle at 88% 18%, var(--rose-blush) 0%, transparent 44%),
+        radial-gradient(circle at 22% 78%, var(--rose-blush) 0%, transparent 46%),
+        radial-gradient(circle at 84% 88%, var(--saffron-glow) 0%, transparent 48%),
+        linear-gradient(175deg, #FFFDF8 0%, var(--parchment) 45%, var(--parchment-warm) 100%);
+      background-attachment: fixed;
       color: var(--ink);
       font-family: 'Cormorant Garamond', 'Noto Serif Kannada', serif;
       overflow-x: hidden;
-      line-height: 1.65;
+      line-height: 1.68;
+      transition: background-color 0.4s ease, color 0.35s ease;
     }
 
     body.lang-kn {
@@ -60,19 +91,25 @@
     .font-display { font-family: 'Cinzel Decorative', 'Noto Serif Kannada', serif; }
     .font-sans { font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif; }
 
-    /* Gold Foil & Surface Blends */
+    /* Luminous Gold Foil & Palette Accents */
     .gold-foil {
-      background: linear-gradient(135deg, #8F6214 0%, #DFB858 35%, #FFF2BE 50%, #C49129 72%, #7D530E 100%);
+      background: linear-gradient(130deg, #8A5A0E 0%, #D9A738 28%, #FFF4C4 50%, #C89226 74%, #7A4C08 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      filter: drop-shadow(0 2px 6px rgba(212, 163, 56, 0.25));
     }
 
     .theme-text { color: var(--primary); }
-    .theme-bg { background-color: var(--primary); color: var(--parchment); }
-    .theme-bg:hover { background-color: var(--primary-dark); }
+    .theme-bg {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #FFFDF8;
+    }
+    .theme-bg:hover {
+      filter: brightness(1.08);
+    }
 
-    /* Blended Shiva-Parvati Artwork Layers */
+    /* Blended Shiva-Parvati & Mandala Background Layers */
     .divine-backdrop {
       position: absolute;
       inset: 0;
@@ -87,7 +124,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: saturate(1.08) contrast(1.03);
+      filter: saturate(1.16) contrast(1.04) brightness(1.02);
     }
 
     .vignette-blend {
@@ -95,23 +132,23 @@
       inset: 0;
       pointer-events: none;
       background:
-        radial-gradient(ellipse at center, rgba(253, 247, 236, 0.25) 0%, rgba(253, 247, 236, 0.82) 72%, #FDF7EC 100%),
-        linear-gradient(180deg, rgba(253, 247, 236, 0.72) 0%, rgba(253, 247, 236, 0.32) 45%, rgba(253, 247, 236, 0.92) 100%);
+        radial-gradient(ellipse at 50% 42%, rgba(255, 249, 232, 0.14) 0%, rgba(255, 249, 232, 0.72) 68%, var(--parchment) 100%),
+        linear-gradient(180deg, rgba(255, 251, 242, 0.65) 0%, rgba(255, 249, 232, 0.22) 48%, rgba(248, 232, 203, 0.88) 100%);
     }
 
-    /* Ornate Blended Cards */
+    /* Luminous Glass-Parchment Cards */
     .ornate-card {
       position: relative;
-      background: linear-gradient(155deg, rgba(255, 251, 242, 0.92) 0%, rgba(253, 247, 236, 0.84) 100%);
-      backdrop-filter: blur(10px) saturate(120%);
-      -webkit-backdrop-filter: blur(10px) saturate(120%);
-      border: 1.5px solid rgba(200, 155, 60, 0.58);
-      border-radius: 28px;
+      background: linear-gradient(150deg, rgba(255, 253, 248, 0.94) 0%, rgba(255, 247, 234, 0.85) 60%, rgba(248, 232, 203, 0.88) 100%);
+      backdrop-filter: blur(12px) saturate(135%);
+      -webkit-backdrop-filter: blur(12px) saturate(135%);
+      border: 1.5px solid rgba(212, 163, 56, 0.65);
+      border-radius: 30px;
       box-shadow:
-        0 20px 50px -18px rgba(71, 11, 20, 0.2),
-        0 4px 16px -4px rgba(140, 96, 20, 0.12),
-        inset 0 0 0 5px rgba(253, 247, 236, 0.75),
-        inset 0 0 0 6px rgba(200, 155, 60, 0.32);
+        0 24px 56px -18px rgba(74, 8, 20, 0.22),
+        0 6px 20px -6px rgba(212, 163, 56, 0.2),
+        inset 0 0 0 5px rgba(255, 253, 248, 0.82),
+        inset 0 0 0 6.5px rgba(212, 163, 56, 0.36);
     }
 
     /* Bell Animation */
@@ -138,9 +175,10 @@
       justify-content: center;
       padding: 18px;
       background:
-        radial-gradient(circle at top, rgba(200, 155, 60, 0.22), transparent 55%),
-        rgba(46, 9, 16, 0.94);
-      backdrop-filter: blur(12px);
+        radial-gradient(circle at 25% 20%, rgba(245, 214, 123, 0.26), transparent 48%),
+        radial-gradient(circle at 80% 75%, rgba(216, 112, 147, 0.22), transparent 52%),
+        linear-gradient(160deg, #4A0814 0%, #26040A 100%);
+      backdrop-filter: blur(14px);
       transition: opacity 0.6s ease, visibility 0.6s ease;
     }
     .curtain.hidden {
@@ -152,12 +190,12 @@
     .curtain-box {
       width: 100%;
       max-width: 540px;
-      background: linear-gradient(160deg, #FFFDF8 0%, #FDF4E3 100%);
+      background: linear-gradient(160deg, #FFFDF9 0%, #FDF2DC 60%, #F9E3E8 100%);
       border: 2px solid var(--accent);
-      border-radius: 28px;
+      border-radius: 30px;
       padding: 36px 26px;
       text-align: center;
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), inset 0 0 0 6px rgba(200, 155, 60, 0.22);
+      box-shadow: 0 32px 75px rgba(0, 0, 0, 0.5), inset 0 0 0 6px rgba(212, 163, 56, 0.25);
     }
 
     /* Top Bar */
@@ -178,14 +216,15 @@
     .pill-group {
       pointer-events: auto;
       display: inline-flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       padding: 5px 10px;
       border-radius: 999px;
-      background: rgba(253, 247, 236, 0.92);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(200, 155, 60, 0.55);
-      box-shadow: 0 8px 24px -8px rgba(46, 26, 24, 0.18);
+      background: rgba(255, 252, 245, 0.92);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 163, 56, 0.6);
+      box-shadow: 0 10px 26px -10px rgba(74, 8, 20, 0.24);
     }
 
     .pill-btn {
@@ -203,7 +242,7 @@
 
     .pill-btn:hover, .pill-btn.active {
       background: var(--primary);
-      color: var(--parchment);
+      color: #FFFDF8;
     }
 
     .divider-dot {
@@ -242,8 +281,8 @@
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
-      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 10px 24px -8px rgba(71, 11, 20, 0.35);
+      transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 12px 26px -8px rgba(74, 8, 20, 0.36);
     }
 
     .btn-primary:hover {
@@ -256,7 +295,7 @@
       justify-content: center;
       gap: 8px;
       border: 1.5px solid var(--accent);
-      background: rgba(255, 255, 255, 0.85);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(253, 243, 219, 0.85));
       color: var(--ink);
       border-radius: 999px;
       padding: 11px 22px;
@@ -265,11 +304,12 @@
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
-      transition: background 0.2s ease, color 0.2s ease;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     }
 
     .btn-outline:hover {
-      background: #FFF3DA;
+      background: #FFF1CF;
+      border-color: var(--primary);
     }
 
     .btn-wa {
@@ -280,14 +320,14 @@
       border: none;
       border-radius: 999px;
       padding: 12px 24px;
-      background: linear-gradient(135deg, #1E8E4E 0%, #146A38 100%);
+      background: linear-gradient(135deg, #219653 0%, #136B39 100%);
       color: #FFFFFF;
       font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
       font-size: 13.5px;
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
-      box-shadow: 0 10px 24px -8px rgba(20, 106, 56, 0.45);
+      box-shadow: 0 12px 26px -8px rgba(19, 107, 57, 0.45);
       transition: transform 0.2s ease, filter 0.2s ease;
     }
 
@@ -305,9 +345,9 @@
     }
 
     .photo-slot {
-      border: 2px dashed rgba(200, 155, 60, 0.72);
+      border: 2px dashed rgba(212, 163, 56, 0.78);
       border-radius: 22px;
-      background: rgba(255, 251, 242, 0.78);
+      background: linear-gradient(160deg, rgba(255, 252, 245, 0.88) 0%, rgba(250, 234, 212, 0.72) 100%);
       min-height: 210px;
       display: flex;
       flex-direction: column;
@@ -317,12 +357,12 @@
       text-align: center;
       overflow: hidden;
       position: relative;
-      transition: border-color 0.2s ease, background 0.2s ease;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
     }
 
     .photo-slot:hover {
       border-color: var(--primary);
-      background: rgba(255, 247, 232, 0.94);
+      transform: translateY(-2px);
     }
 
     .photo-slot img {
@@ -344,8 +384,8 @@
     .photo-caption-input {
       width: 100%;
       margin-top: 10px;
-      border: 1px solid rgba(200, 155, 60, 0.45);
-      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(212, 163, 56, 0.52);
+      background: rgba(255, 255, 255, 0.92);
       border-radius: 10px;
       padding: 6px 10px;
       font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
@@ -360,10 +400,11 @@
       max-width: 540px;
       margin: 24px auto 0;
       padding: 16px;
-      border-radius: 22px;
-      background: rgba(255, 251, 242, 0.86);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(200, 155, 60, 0.5);
+      border-radius: 24px;
+      background: linear-gradient(150deg, rgba(255, 253, 247, 0.92) 0%, rgba(253, 242, 218, 0.85) 100%);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(212, 163, 56, 0.62);
+      box-shadow: 0 14px 32px -14px rgba(74, 8, 20, 0.16);
     }
 
     .countdown-grid {
@@ -374,8 +415,8 @@
     }
 
     .cd-cell {
-      background: rgba(253, 247, 236, 0.95);
-      border: 1px solid rgba(200, 155, 60, 0.35);
+      background: linear-gradient(180deg, #FFFFFF 0%, #FDF3DC 100%);
+      border: 1px solid rgba(212, 163, 56, 0.45);
       border-radius: 14px;
       padding: 10px 6px;
     }
@@ -419,8 +460,8 @@
     .field-input, .field-textarea {
       width: 100%;
       border-radius: 14px;
-      border: 1.5px solid rgba(200, 155, 60, 0.52);
-      background: rgba(255, 255, 255, 0.92);
+      border: 1.5px solid rgba(212, 163, 56, 0.58);
+      background: rgba(255, 255, 255, 0.94);
       padding: 11px 14px;
       font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
       font-size: 14px;
@@ -431,24 +472,25 @@
 
     .field-input:focus, .field-textarea:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(200, 155, 60, 0.22);
+      box-shadow: 0 0 0 3px rgba(212, 163, 56, 0.25);
     }
 
     .preset-chip {
-      border: 1px solid rgba(200, 155, 60, 0.6);
-      background: rgba(255, 248, 232, 0.9);
+      border: 1px solid rgba(212, 163, 56, 0.65);
+      background: linear-gradient(145deg, #FFFDF8, #FDECC8);
       color: var(--ink);
       border-radius: 999px;
-      padding: 6px 12px;
+      padding: 6px 13px;
       font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
       font-size: 12px;
+      font-weight: 500;
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
     .preset-chip:hover {
       background: var(--primary);
-      color: var(--parchment);
+      color: #FFFDF8;
       border-color: var(--primary);
     }
 
@@ -460,8 +502,8 @@
     }
 
     .blessing-card {
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(200, 155, 60, 0.45);
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.92) 0%, rgba(254, 245, 227, 0.86) 100%);
+      border: 1px solid rgba(212, 163, 56, 0.5);
       border-radius: 18px;
       padding: 16px;
       display: flex;
@@ -470,7 +512,7 @@
       gap: 10px;
     }
 
-    /* Attached Music Background Bar */
+    /* Cross-Device Uniform Background Music Bar */
     .music-bar {
       position: fixed;
       bottom: 14px;
@@ -478,13 +520,13 @@
       transform: translateX(-50%);
       z-index: 45;
       width: min(95%, 560px);
-      background: rgba(54, 9, 17, 0.96);
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #24050B 100%);
       backdrop-filter: blur(12px);
-      border: 1.5px solid rgba(200, 155, 60, 0.75);
+      border: 1.5px solid rgba(212, 163, 56, 0.78);
       border-radius: 20px;
       padding: 10px 14px;
-      color: var(--parchment);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      color: #FFFDF8;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.38);
       font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
     }
 
@@ -496,11 +538,11 @@
       font-weight: 700;
       cursor: pointer;
       background: var(--accent);
-      color: #360911;
+      color: #2C0A10;
     }
 
     .music-btn:hover {
-      background: var(--accent-light);
+      background: var(--accent-bright);
     }
 
     @media (max-width: 600px) {
@@ -532,7 +574,7 @@
         <button onclick="openWithLanguage('kn', true)" class="btn-primary theme-bg" style="width: 100%; padding: 14px 20px; font-size: 15px;">
           ಕನ್ನಡದಲ್ಲಿ ತೆರೆಯಿರಿ (Open in Kannada)
         </button>
-        <button onclick="openWithLanguage('en', true)" class="btn-outline" style="width: 100%; padding: 13px 20px; font-size: 14px; border-color: #6A1421; color: #6A1421; font-weight: 700;">
+        <button onclick="openWithLanguage('en', true)" class="btn-outline" style="width: 100%; padding: 13px 20px; font-size: 14px; border-color: var(--primary); color: var(--primary); font-weight: 700;">
           Open in English
         </button>
       </div>
@@ -549,13 +591,13 @@
     </div>
   </div>
 
-  <!-- TOP NAVIGATION & LANGUAGE / STYLE CONTROLS -->
+  <!-- TOP NAVIGATION & LANGUAGE / PALETTE / BLEND CONTROLS -->
   <header class="topbar">
     <div class="pill-group">
       <button id="langEnBtn" onclick="setLanguage('en')" class="pill-btn active">English</button>
       <button id="langKnBtn" onclick="setLanguage('kn')" class="pill-btn">ಕನ್ನಡ</button>
       <span class="divider-dot">|</span>
-      <button id="themeBtn" onclick="toggleTheme()" class="pill-btn">Maroon</button>
+      <button id="themeBtn" onclick="cyclePalette()" class="pill-btn">Palette: Crimson Gold</button>
       <button id="blendBtn" onclick="toggleBlend()" class="pill-btn">Art Blend: Soft</button>
     </div>
 
@@ -571,33 +613,33 @@
       <svg viewBox="0 0 1200 820" preserveAspectRatio="xMidYMid slice">
         <defs>
           <radialGradient id="kailashGlow" cx="50%" cy="42%" r="46%">
-            <stop offset="0%" stop-color="#FFE48F" stop-opacity="0.95" />
-            <stop offset="50%" stop-color="#E5B24C" stop-opacity="0.45" />
-            <stop offset="100%" stop-color="#FDF7EC" stop-opacity="0" />
+            <stop offset="0%" stop-color="#FFE694" stop-opacity="0.96" />
+            <stop offset="52%" stop-color="#E7B34B" stop-opacity="0.48" />
+            <stop offset="100%" stop-color="#FFF9EE" stop-opacity="0" />
           </radialGradient>
           <linearGradient id="kailashPeak" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#C8A97E" stop-opacity="0.75" />
-            <stop offset="100%" stop-color="#FDF7EC" stop-opacity="0" />
+            <stop offset="0%" stop-color="#C8A27A" stop-opacity="0.78" />
+            <stop offset="100%" stop-color="#FFF9EE" stop-opacity="0" />
           </linearGradient>
         </defs>
         <polygon points="600,65 300,510 900,510" fill="url(#kailashPeak)" />
         <polygon points="380,195 130,550 640,550" fill="url(#kailashPeak)" opacity="0.6" />
         <polygon points="820,195 560,550 1070,550" fill="url(#kailashPeak)" opacity="0.6" />
         <circle cx="600" cy="365" r="245" fill="url(#kailashGlow)" />
-        <circle cx="600" cy="365" r="188" fill="none" stroke="#B88428" stroke-width="3.5" stroke-dasharray="10 6" />
+        <circle cx="600" cy="365" r="188" fill="none" stroke="#C48F2A" stroke-width="3.5" stroke-dasharray="10 6" />
         <circle cx="600" cy="365" r="172" fill="none" stroke="#8C5811" stroke-width="2" />
         <!-- Shiva & Parvati Divine Union Emblem -->
         <g transform="translate(600, 380)" fill="#7A3B2E" stroke="#6A1421" stroke-width="1.5">
           <path d="M-56,-66 C-56,-96 -20,-96 -20,-66 C-20,-42 -56,-42 -56,-66 Z" />
           <path d="M-48,-89 C-48,-113 -28,-113 -28,-89 Z" />
-          <path d="M-24,-97 A10,10 0 1,0 -14,-87 A8,8 0 1,1 -24,-97 Z" fill="#C89B3C" />
+          <path d="M-24,-97 A10,10 0 1,0 -14,-87 A8,8 0 1,1 -24,-97 Z" fill="#D4A338" />
           <path d="M-86,48 C-86,-14 -66,-38 -38,-38 C-12,-38 2,-18 5,48 Z" />
           <path d="M18,-56 C18,-82 48,-82 48,-56 C48,-36 18,-36 18,-56 Z" />
-          <path d="M24,-78 L33,-98 L42,-78 Z" fill="#C89B3C" />
+          <path d="M24,-78 L33,-98 L42,-78 Z" fill="#D4A338" />
           <path d="M-2,48 C2,-10 15,-30 35,-30 C58,-30 76,-8 82,48 Z" />
-          <path d="M-45,-14 Q0,36 42,-12" fill="none" stroke="#C89B3C" stroke-width="4" />
+          <path d="M-45,-14 Q0,36 42,-12" fill="none" stroke="#D4A338" stroke-width="4" />
         </g>
-        <g transform="translate(600, 525)" fill="#D98A8C" opacity="0.72">
+        <g transform="translate(600, 525)" fill="#E08A9A" opacity="0.74">
           <ellipse cx="0" cy="0" rx="92" ry="18" />
           <ellipse cx="-56" cy="6" rx="52" ry="12" />
           <ellipse cx="56" cy="6" rx="52" ry="12" />
@@ -608,13 +650,13 @@
 
     <!-- Swaying Temple Bells -->
     <svg class="bell-left" style="position: absolute; top: 0; left: 18px; width: 56px; height: 150px; pointer-events: none;" viewBox="0 0 60 180" aria-hidden="true">
-      <line x1="30" y1="0" x2="30" y2="95" stroke="#B88428" stroke-width="2.5" stroke-dasharray="4 2" />
-      <path d="M18,95 Q30,82 42,95 L48,132 Q30,140 12,132 Z" fill="#D4A23A" stroke="#8C6014" stroke-width="1.5" />
+      <line x1="30" y1="0" x2="30" y2="95" stroke="#C48F2A" stroke-width="2.5" stroke-dasharray="4 2" />
+      <path d="M18,95 Q30,82 42,95 L48,132 Q30,140 12,132 Z" fill="#D8A73C" stroke="#8C6014" stroke-width="1.5" />
       <circle cx="30" cy="138" r="5" fill="#8C6014" />
     </svg>
     <svg class="bell-right" style="position: absolute; top: 0; right: 18px; width: 56px; height: 150px; pointer-events: none;" viewBox="0 0 60 180" aria-hidden="true">
-      <line x1="30" y1="0" x2="30" y2="95" stroke="#B88428" stroke-width="2.5" stroke-dasharray="4 2" />
-      <path d="M18,95 Q30,82 42,95 L48,132 Q30,140 12,132 Z" fill="#D4A23A" stroke="#8C6014" stroke-width="1.5" />
+      <line x1="30" y1="0" x2="30" y2="95" stroke="#C48F2A" stroke-width="2.5" stroke-dasharray="4 2" />
+      <path d="M18,95 Q30,82 42,95 L48,132 Q30,140 12,132 Z" fill="#D8A73C" stroke="#8C6014" stroke-width="1.5" />
       <circle cx="30" cy="138" r="5" fill="#8C6014" />
     </svg>
 
@@ -682,7 +724,7 @@
         <p data-i18n="letterP4" style="font-size: 20px; margin: 12px 0 0;">
           Your presence will make our celebration even more special and memorable. I warmly invite you and your family to join us, celebrate with us, and shower us with your love and blessings.
         </p>
-        <div style="margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(200, 155, 60, 0.4);">
+        <div style="margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(212, 163, 56, 0.45);">
           <p data-i18n="withLove" style="font-size: 18px; font-style: italic; color: var(--muted); margin: 0;">With love,</p>
           <p class="font-script theme-text" data-i18n="netraFamily" style="font-size: 40px; line-height: 1.2; margin: 4px 0 0;">
             Netra &amp; Family
@@ -759,7 +801,7 @@
   <section style="position: relative; padding-top: 32px; padding-bottom: 56px;">
     <div class="divine-backdrop" aria-hidden="true">
       <svg viewBox="0 0 1200 720" preserveAspectRatio="xMidYMid slice">
-        <g stroke="#B88428" fill="none" opacity="0.78">
+        <g stroke="#C48F2A" fill="none" opacity="0.78">
           <rect x="210" y="85" width="26" height="540" stroke-width="2.5" />
           <rect x="964" y="85" width="26" height="540" stroke-width="2.5" />
           <path d="M210,135 Q600,35 990,135" stroke-width="4" />
@@ -767,12 +809,12 @@
           <path d="M236,152 Q418,225 600,152 Q782,225 964,152" stroke="#8C6014" stroke-width="2.5" />
         </g>
         <g transform="translate(600, 385)">
-          <circle cx="0" cy="-20" r="195" fill="#E8C97A" opacity="0.3" />
+          <circle cx="0" cy="-20" r="195" fill="#F5D67B" opacity="0.32" />
           <circle cx="-65" cy="-85" r="20" fill="#7A3B2E" />
           <path d="M-95,90 L-90,-50 Q-65,-62 -40,-50 L-35,90 Z" fill="#7A3B2E" />
           <circle cx="65" cy="-78" r="18" fill="#6A1421" />
           <path d="M38,90 L43,-45 Q65,-56 87,-45 L94,90 Z" fill="#6A1421" />
-          <path d="M-45,-42 Q0,18 45,-42" fill="none" stroke="#C89B3C" stroke-width="5" />
+          <path d="M-45,-42 Q0,18 45,-42" fill="none" stroke="#D4A338" stroke-width="5" />
           <path d="M-42,-30 Q0,32 42,-30" fill="none" stroke="#9C6F1C" stroke-width="4" />
           <path d="M0,45 C-16,70 -12,92 0,95 C12,92 16,70 0,45 Z" fill="#D97724" opacity="0.85" />
         </g>
@@ -914,26 +956,26 @@
     </footer>
   </section>
 
-  <!-- ATTACHED MUSIC BACKGROUND BAR (Madarangi / Wedding Invitation Video Kannada) -->
+  <!-- UNIFORM CROSS-DEVICE BACKGROUND MUSIC BAR (Same Sound on System, Mobile, Android & iPhone) -->
   <div class="music-bar">
     <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
       <div style="min-width: 0; flex: 1;">
         <div style="font-size: 12.5px; font-weight: 700; color: var(--accent-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-          Attached Wedding Music • Netra
+          Wedding Melody • Netra
         </div>
-        <div id="musicStatus" style="font-size: 11px; color: rgba(253, 247, 236, 0.85); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-          Ready • Plays attached music in background
+        <div id="musicStatus" style="font-size: 11px; color: rgba(255, 253, 248, 0.85); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          Ready • Same music across all devices
         </div>
       </div>
       <div style="display: flex; align-items: center; gap: 6px;">
-        <button id="musicToggleBtn" onclick="toggleAttachedBgMusic()" class="music-btn">Play Music</button>
-        <label class="music-btn" style="background: rgba(255,255,255,0.14); color: var(--accent-light); border: 1px solid rgba(200,155,60,0.55); cursor: pointer;">
-          Audio File
-          <input type="file" accept="audio/*" style="display: none;" onchange="loadAttachedAudioFile(event)" />
+        <button id="musicToggleBtn" onclick="toggleUniformMusic()" class="music-btn">Play Music</button>
+        <label class="music-btn" style="background: rgba(255,255,255,0.14); color: var(--accent-light); border: 1px solid rgba(212,163,56,0.55); cursor: pointer;">
+          MP3/WAV
+          <input type="file" accept="audio/*" style="display: none;" onchange="loadUniformAudioFile(event)" />
         </label>
       </div>
     </div>
-    <audio id="attachedBgAudio" loop preload="auto"></audio>
+    <audio id="uniformAudioEl" loop playsinline webkit-playsinline preload="auto"></audio>
   </div>
 
   <script>
@@ -1052,6 +1094,21 @@
     };
 
     let currentLang = 'en';
+    const palettes = [
+      { cls: '', label: 'Palette: Crimson Gold' },
+      { cls: 'theme-emerald', label: 'Palette: Temple Emerald' },
+      { cls: 'theme-royal', label: 'Palette: Royal Amethyst' }
+    ];
+    let paletteIdx = 0;
+
+    function cyclePalette() {
+      paletteIdx = (paletteIdx + 1) % palettes.length;
+      document.body.classList.remove('theme-emerald', 'theme-royal');
+      if (palettes[paletteIdx].cls) {
+        document.body.classList.add(palettes[paletteIdx].cls);
+      }
+      document.getElementById('themeBtn').textContent = palettes[paletteIdx].label;
+    }
 
     function setLanguage(lang) {
       currentLang = lang;
@@ -1072,13 +1129,8 @@
       setLanguage(lang);
       document.getElementById('welcomeCurtain').classList.add('hidden');
       if (playAudio) {
-        startAttachedBgMusic();
+        startUniformMusic();
       }
-    }
-
-    function toggleTheme() {
-      const isEm = document.body.classList.toggle('theme-emerald');
-      document.getElementById('themeBtn').textContent = isEm ? 'Emerald' : 'Maroon';
     }
 
     function toggleBlend() {
@@ -1086,7 +1138,6 @@
       document.getElementById('blendBtn').textContent = isVivid ? 'Art Blend: Vivid' : 'Art Blend: Soft';
     }
 
-    // Photo Slot Preview
     function previewPhoto(event, slotId, imgId) {
       const file = event.target.files[0];
       if (!file) return;
@@ -1113,7 +1164,6 @@
     tickCountdown();
     setInterval(tickCountdown, 1000);
 
-    // Calendar ICS & Venue Utilities
     function downloadICS(eventType) {
       const isRec = eventType === 'reception';
       const summary = isRec ? `${RECIPIENT_NAME} & Sachin — Wedding Reception` : `${RECIPIENT_NAME} & Sachin — Wedding Muhurtham`;
@@ -1161,8 +1211,7 @@
       }
     }
 
-    // Blessings Wall & Send wishes to Netra
-    const STORAGE_KEY = 'netra_sachin_blessings_v6';
+    const STORAGE_KEY = 'netra_sachin_blessings_v8';
     const initialBlessings = [
       {
         name: 'Family & Well-Wishers',
@@ -1256,128 +1305,111 @@
 
     renderBlessings();
 
-    // Attached Wedding Music ("Madarangi yalli manasina rangu moodide") in Background
-    let audioCtx = null;
-    let masterGain = null;
-    let bgTimer = null;
-    let isBgPlaying = false;
-    let hasCustomAudioFile = false;
+    // Deterministic, Cross-Device Identical Wedding Melody
+    // Uses a fixed WAV buffer so Desktop, Mobile, Android, and iPhone play the exact same audio waveform
+    let uniformAudioEl = document.getElementById('uniformAudioEl');
+    let hasLoadedCustomFile = false;
+    let isUniformPlaying = false;
 
-    const madarangiSequence = [
-      { freq: 293.66, dur: 0.65 }, // D4  - Ma-da-
-      { freq: 329.63, dur: 0.65 }, // E4  - ran-gi-
-      { freq: 392.00, dur: 0.85 }, // G4  - yal-li
-      { freq: 440.00, dur: 0.65 }, // A4  - ma-na-
-      { freq: 493.88, dur: 0.65 }, // B4  - si-na
-      { freq: 440.00, dur: 0.65 }, // A4  - ran-
-      { freq: 392.00, dur: 0.65 }, // G4  - gu
-      { freq: 329.63, dur: 0.95 }  // E4  - moo-di-de
-    ];
-    let seqIdx = 0;
+    function buildDeterministicWavUrl() {
+      const sampleRate = 22050;
+      const notes = [
+        { freq: 293.66, start: 0.00, dur: 0.60 }, // D4
+        { freq: 329.63, start: 0.62, dur: 0.60 }, // E4
+        { freq: 392.00, start: 1.24, dur: 0.80 }, // G4
+        { freq: 440.00, start: 2.06, dur: 0.60 }, // A4
+        { freq: 493.88, start: 2.68, dur: 0.60 }, // B4
+        { freq: 440.00, start: 3.30, dur: 0.60 }, // A4
+        { freq: 392.00, start: 3.92, dur: 0.60 }, // G4
+        { freq: 329.63, start: 4.54, dur: 0.90 }  // E4
+      ];
+      const loopDuration = 5.5;
+      const numSamples = Math.floor(sampleRate * loopDuration);
+      const pcm = new Float32Array(numSamples);
 
-    function playMadarangiStep() {
-      if (!audioCtx || !masterGain || !isBgPlaying || hasCustomAudioFile) return;
-      const step = madarangiSequence[seqIdx % madarangiSequence.length];
-      const now = audioCtx.currentTime;
+      for (const n of notes) {
+        const startIdx = Math.floor(n.start * sampleRate);
+        const endIdx = Math.min(numSamples, Math.floor((n.start + n.dur) * sampleRate));
+        for (let i = startIdx; i < endIdx; i++) {
+          const t = (i - startIdx) / sampleRate;
+          const attack = Math.min(1, t / 0.04);
+          const release = Math.max(0, 1 - (t / n.dur));
+          const env = attack * release * 0.24;
+          const wave =
+            0.72 * Math.sin(2 * Math.PI * n.freq * t) +
+            0.28 * Math.sin(2 * Math.PI * (n.freq * 2) * t);
+          pcm[i] = Math.max(-1, Math.min(1, pcm[i] + wave * env));
+        }
+      }
 
-      const lead = audioCtx.createOscillator();
-      const pad = audioCtx.createOscillator();
-      const env = audioCtx.createGain();
+      const wavBuffer = new ArrayBuffer(44 + numSamples * 2);
+      const view = new DataView(wavBuffer);
+      const writeStr = (off, str) => {
+        for (let i = 0; i < str.length; i++) view.setUint8(off + i, str.charCodeAt(i));
+      };
+      writeStr(0, 'RIFF');
+      view.setUint32(4, 36 + numSamples * 2, true);
+      writeStr(8, 'WAVE');
+      writeStr(12, 'fmt ');
+      view.setUint32(16, 16, true);
+      view.setUint16(20, 1, true);
+      view.setUint16(22, 1, true);
+      view.setUint32(24, sampleRate, true);
+      view.setUint32(28, sampleRate * 2, true);
+      view.setUint16(32, 2, true);
+      view.setUint16(34, 16, true);
+      writeStr(36, 'data');
+      view.setUint32(40, numSamples * 2, true);
 
-      lead.type = 'triangle';
-      lead.frequency.setValueAtTime(step.freq, now);
+      let offset = 44;
+      for (let i = 0; i < numSamples; i++) {
+        const s = Math.max(-1, Math.min(1, pcm[i]));
+        view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+        offset += 2;
+      }
 
-      pad.type = 'sine';
-      pad.frequency.setValueAtTime(step.freq * 0.5, now);
-
-      env.gain.setValueAtTime(0.001, now);
-      env.gain.linearRampToValueAtTime(0.17, now + 0.06);
-      env.gain.exponentialRampToValueAtTime(0.002, now + step.dur + 0.3);
-
-      lead.connect(env);
-      pad.connect(env);
-      env.connect(masterGain);
-
-      lead.start(now);
-      pad.start(now);
-      lead.stop(now + step.dur + 0.35);
-      pad.stop(now + step.dur + 0.35);
-
-      seqIdx++;
+      return URL.createObjectURL(new Blob([wavBuffer], { type: 'audio/wav' }));
     }
 
-    function loadAttachedAudioFile(e) {
+    uniformAudioEl.src = buildDeterministicWavUrl();
+    uniformAudioEl.volume = 0.85;
+
+    function loadUniformAudioFile(e) {
       const file = e.target.files[0];
       if (!file) return;
-      const audioEl = document.getElementById('attachedBgAudio');
-      audioEl.src = URL.createObjectURL(file);
-      audioEl.volume = 0.9;
-      hasCustomAudioFile = true;
-      stopSeqOnly();
-      audioEl.play().then(() => {
-        isBgPlaying = true;
-        updateBgMusicUI('Playing attached music in background');
+      uniformAudioEl.src = URL.createObjectURL(file);
+      uniformAudioEl.volume = 0.85;
+      hasLoadedCustomFile = true;
+      uniformAudioEl.play().then(() => {
+        isUniformPlaying = true;
+        updateUniformMusicUI('Playing same audio in background');
       }).catch(() => {});
     }
 
-    function stopSeqOnly() {
-      if (bgTimer) {
-        clearInterval(bgTimer);
-        bgTimer = null;
-      }
+    function startUniformMusic() {
+      uniformAudioEl.play().then(() => {
+        isUniformPlaying = true;
+        updateUniformMusicUI(hasLoadedCustomFile ? 'Playing selected audio in background' : 'Playing identical melody in background');
+      }).catch(() => {});
     }
 
-    function startAttachedBgMusic() {
-      const audioEl = document.getElementById('attachedBgAudio');
-      if (hasCustomAudioFile && audioEl.src) {
-        audioEl.play().then(() => {
-          isBgPlaying = true;
-          updateBgMusicUI('Playing attached music in background');
-        }).catch(() => {});
-        return;
-      }
-
-      const Ctx = window.AudioContext || window.webkitAudioContext;
-      if (Ctx) {
-        if (!audioCtx) {
-          audioCtx = new Ctx();
-          masterGain = audioCtx.createGain();
-          masterGain.gain.value = 0.85;
-          masterGain.connect(audioCtx.destination);
-        }
-        if (audioCtx.state === 'suspended') {
-          audioCtx.resume();
-        }
-      }
-
-      stopSeqOnly();
-      isBgPlaying = true;
-      playMadarangiStep();
-      bgTimer = setInterval(playMadarangiStep, 660);
-      updateBgMusicUI('Playing attached music in background');
+    function stopUniformMusic() {
+      uniformAudioEl.pause();
+      isUniformPlaying = false;
+      updateUniformMusicUI('Paused • Tap Play Music');
     }
 
-    function stopAttachedBgMusic() {
-      stopSeqOnly();
-      const audioEl = document.getElementById('attachedBgAudio');
-      if (hasCustomAudioFile) {
-        audioEl.pause();
-      }
-      isBgPlaying = false;
-      updateBgMusicUI('Paused • Tap Play Music');
-    }
-
-    function toggleAttachedBgMusic() {
-      if (isBgPlaying) {
-        stopAttachedBgMusic();
+    function toggleUniformMusic() {
+      if (isUniformPlaying) {
+        stopUniformMusic();
       } else {
-        startAttachedBgMusic();
+        startUniformMusic();
       }
     }
 
-    function updateBgMusicUI(text) {
-      document.getElementById('musicStatus').textContent = text;
-      document.getElementById('musicToggleBtn').textContent = isBgPlaying ? 'Mute Music' : 'Play Music';
+    function updateUniformMusicUI(msg) {
+      document.getElementById('musicStatus').textContent = msg;
+      document.getElementById('musicToggleBtn').textContent = isUniformPlaying ? 'Mute Music' : 'Play Music';
     }
   </script>
 </body>
