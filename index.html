@@ -296,28 +296,6 @@
       filter: brightness(1.06);
     }
 
-    .tune-link-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 14px;
-      padding: 9px 18px;
-      border-radius: 999px;
-      border: 1.5px solid rgba(200, 155, 60, 0.72);
-      background: rgba(255, 252, 244, 0.92);
-      color: var(--primary);
-      font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
-      font-size: 12.5px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-
-    .tune-link-pill:hover {
-      background: #FFF0CE;
-      transform: translateY(-1px);
-    }
-
     /* Countdown Grid */
     .countdown-box {
       max-width: 540px;
@@ -433,6 +411,39 @@
       gap: 10px;
     }
 
+    /* Direct Built-In Music Bar (No External Links) */
+    .music-bar {
+      position: fixed;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 45;
+      width: min(94%, 520px);
+      background: rgba(54, 9, 17, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(200, 155, 60, 0.72);
+      border-radius: 20px;
+      padding: 10px 14px;
+      color: var(--parchment);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
+    }
+
+    .music-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--accent);
+      color: #360911;
+    }
+
+    .music-btn:hover {
+      background: var(--accent-light);
+    }
+
     @media (max-width: 600px) {
       .curtain-box { padding: 28px 18px; }
       .ornate-card { border-radius: 22px; }
@@ -459,11 +470,21 @@
       </p>
 
       <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 10px;">
-        <button onclick="openWithLanguage('kn')" class="btn-primary theme-bg" style="width: 100%; padding: 14px 20px; font-size: 15px;">
+        <button onclick="openWithLanguage('kn', true)" class="btn-primary theme-bg" style="width: 100%; padding: 14px 20px; font-size: 15px;">
           ಕನ್ನಡದಲ್ಲಿ ತೆರೆಯಿರಿ (Open in Kannada)
         </button>
-        <button onclick="openWithLanguage('en')" class="btn-outline" style="width: 100%; padding: 13px 20px; font-size: 14px; border-color: #6A1421; color: #6A1421; font-weight: 700;">
+        <button onclick="openWithLanguage('en', true)" class="btn-outline" style="width: 100%; padding: 13px 20px; font-size: 14px; border-color: #6A1421; color: #6A1421; font-weight: 700;">
           Open in English
+        </button>
+      </div>
+
+      <div style="margin-top: 12px; display: flex; justify-content: center; gap: 14px; font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif; font-size: 12px; color: #6E5652;">
+        <button onclick="openWithLanguage('kn', false)" style="background: none; border: none; color: inherit; text-decoration: underline; cursor: pointer;">
+          ಕನ್ನಡ (ಮೌನವಾಗಿ)
+        </button>
+        <span>•</span>
+        <button onclick="openWithLanguage('en', false)" style="background: none; border: none; color: inherit; text-decoration: underline; cursor: pointer;">
+          English (Silent)
         </button>
       </div>
     </div>
@@ -558,13 +579,6 @@
 
       <div class="font-script theme-text" data-i18n="coupleNames" style="font-size: clamp(52px, 9.5vw, 88px); line-height: 1.15; margin-top: 8px;">
         S. Netra &amp; Sachin
-      </div>
-
-      <!-- YouTube Tune Link Only -->
-      <div>
-        <a href="https://www.youtube.com/watch?v=onBUCFbLYLc" target="_blank" rel="noopener noreferrer" class="tune-link-pill" data-i18n="tuneLinkLabel">
-          Wedding Tune on YouTube
-        </a>
       </div>
 
       <!-- Countdown -->
@@ -719,7 +733,7 @@
   </section>
 
   <!-- BLESSINGS & DIRECT WHATSAPP SECTION (+91 88676 81608) -->
-  <section class="container" style="padding-top: 12px; padding-bottom: 64px;">
+  <section class="container" style="padding-top: 12px; padding-bottom: 105px;">
     <div class="ornate-card" style="padding: 32px 24px;">
       <div style="text-align: center;">
         <p class="font-sans" data-i18n="blessingsSub" style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: #8C6014; margin: 0;">
@@ -772,20 +786,29 @@
       <p style="font-size: 19px; margin: 0;">
         <span data-i18n="withLoveFooter">With love,</span> <strong class="theme-text" data-i18n="netraFamilyFooter">Netra &amp; Family</strong>
       </p>
-      <p style="margin: 10px 0 0;">
-        <a href="https://www.youtube.com/watch?v=onBUCFbLYLc" target="_blank" rel="noopener noreferrer" style="font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif; font-size: 12.5px; font-weight: 600; color: #8C6014; text-decoration: underline;">
-          Wedding Tune on YouTube
-        </a>
-      </p>
       <p class="font-sans" style="font-size: 12px; margin: 6px 0 0;">
         Sri Siddeshwara Kalyana Mantapa • Ranebennur, Karnataka – 581115
       </p>
     </footer>
   </section>
 
+  <!-- DIRECT BUILT-IN WEDDING MUSIC BAR (Zero External Links) -->
+  <div class="music-bar">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+      <div style="min-width: 0; flex: 1;">
+        <div style="font-size: 12.5px; font-weight: 700; color: var(--accent-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          Wedding Melody • Direct Built-In Audio
+        </div>
+        <div id="musicStatus" style="font-size: 11px; color: rgba(253, 247, 236, 0.8); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          Ready to play directly
+        </div>
+      </div>
+      <button id="musicToggleBtn" onclick="toggleDirectMusic()" class="music-btn">Play Music</button>
+    </div>
+  </div>
+
   <script>
     const WA_TARGET_PHONE = '918867681608';
-    const YT_TUNE_URL = 'https://www.youtube.com/watch?v=onBUCFbLYLc';
 
     const I18N = {
       en: {
@@ -795,7 +818,6 @@
         saveTheDate: 'Save the Date',
         celebrationOf: 'For the Wedding Celebration of',
         coupleNames: 'S. Netra & Sachin',
-        tuneLinkLabel: 'Wedding Tune on YouTube',
         countdownTitle: 'Countdown to Muhurtham • 13 Dec 2026, 12:30 PM',
         daysLabel: 'Days',
         hoursLabel: 'Hours',
@@ -842,7 +864,6 @@
         saveTheDate: 'ಶುಭ ವಿವಾಹ ಆಮಂತ್ರಣ',
         celebrationOf: 'ಮಂಗಳ ಶುಭ ಸಮಾರಂಭ',
         coupleNames: 'ಸ. ನೇತ್ರಾ & ಸಚಿನ್',
-        tuneLinkLabel: 'ಯೂಟ್ಯೂಬ್ ಮದುವೆ ರಾಗ / ಹಾಡು',
         countdownTitle: 'ಮುಹೂರ್ತಕ್ಕೆ ಕ್ಷಣಗಣನೆ • 13 ಡಿಸೆಂಬರ್ 2026, ಮಧ್ಯಾಹ್ನ 12:30',
         daysLabel: 'ದಿನಗಳು',
         hoursLabel: 'ಗಂಟೆಗಳು',
@@ -901,9 +922,12 @@
       });
     }
 
-    function openWithLanguage(lang) {
+    function openWithLanguage(lang, playAudio) {
       setLanguage(lang);
       document.getElementById('welcomeCurtain').classList.add('hidden');
+      if (playAudio) {
+        startDirectMusic();
+      }
     }
 
     function toggleTheme() {
@@ -973,8 +997,7 @@
         'Reception: 12th Dec, Saturday (7:30 PM onwards)\n' +
         'Wedding: 13th Dec, Sunday (12:30 PM – Muhurtham)\n' +
         'Venue: Sri Siddeshwara Kalyana Mantapa, Ranebennur, Karnataka – 581115\n' +
-        'Map: https://maps.app.goo.gl/imAc57pK9dMQYaoe9\n' +
-        'Tune: ' + YT_TUNE_URL;
+        'Map: https://maps.app.goo.gl/imAc57pK9dMQYaoe9';
       if (navigator.share) {
         navigator.share({ title: 'S. Netra & Sachin Wedding Invitation', text: msg });
       } else {
@@ -1077,6 +1100,91 @@
     }
 
     renderBlessings();
+
+    // Direct Built-In Wedding Melody (No YouTube or External Links)
+    let audioCtx = null;
+    let melodyTimer = null;
+    let isPlaying = false;
+
+    const melodySequence = [
+      { freq: 293.66, dur: 0.9 }, // D4
+      { freq: 329.63, dur: 0.7 }, // E4
+      { freq: 392.00, dur: 0.9 }, // G4
+      { freq: 440.00, dur: 0.9 }, // A4
+      { freq: 587.33, dur: 1.1 }, // D5
+      { freq: 440.00, dur: 0.8 }, // A4
+      { freq: 392.00, dur: 0.8 }, // G4
+      { freq: 329.63, dur: 1.0 }  // E4
+    ];
+    let noteIndex = 0;
+
+    function playMelodyNote() {
+      if (!audioCtx) return;
+      const step = melodySequence[noteIndex % melodySequence.length];
+      const now = audioCtx.currentTime;
+
+      const osc = audioCtx.createOscillator();
+      const subOsc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(step.freq, now);
+
+      subOsc.type = 'triangle';
+      subOsc.frequency.setValueAtTime(step.freq * 0.5, now);
+
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.linearRampToValueAtTime(0.065, now + 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.0008, now + step.dur + 0.45);
+
+      osc.connect(gain);
+      subOsc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(now);
+      subOsc.start(now);
+      osc.stop(now + step.dur + 0.5);
+      subOsc.stop(now + step.dur + 0.5);
+
+      noteIndex++;
+    }
+
+    function startDirectMusic() {
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      if (!Ctx) return;
+      if (!audioCtx) audioCtx = new Ctx();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      if (melodyTimer) clearInterval(melodyTimer);
+      isPlaying = true;
+      playMelodyNote();
+      melodyTimer = setInterval(playMelodyNote, 820);
+      updateMusicBar();
+    }
+
+    function stopDirectMusic() {
+      if (melodyTimer) {
+        clearInterval(melodyTimer);
+        melodyTimer = null;
+      }
+      isPlaying = false;
+      updateMusicBar();
+    }
+
+    function toggleDirectMusic() {
+      if (isPlaying) {
+        stopDirectMusic();
+      } else {
+        startDirectMusic();
+      }
+    }
+
+    function updateMusicBar() {
+      document.getElementById('musicToggleBtn').textContent = isPlaying ? 'Pause Music' : 'Play Music';
+      document.getElementById('musicStatus').textContent = isPlaying
+        ? 'Playing wedding melody directly'
+        : 'Paused • Tap to play directly';
+    }
   </script>
 </body>
 </html>
